@@ -1,7 +1,6 @@
 ## Futher explanations on files
 
-### questao 1 (Gabriel Quintiliano Prova 30-06-2023).txt
-### questoes 2 a 6 (Gabriel Quintiliano Prova 30-06-2023).txt
+### 'questao 1 (Gabriel Quintiliano Prova 30-06-2023).txt' & 'questoes 2 a 6 (Gabriel Quintiliano Prova 30-06-2023).txt'
 
 These are the files that were actually sent for Ada Tech for grading, although 'questao 1 (Gabriel Quintiliano Prova 30-06-2023).txt' is a JavaScript code snippet, I've sent it as a text file as it was allowed and by the time I also wasn't that familiar with Git and GitHub.
 
