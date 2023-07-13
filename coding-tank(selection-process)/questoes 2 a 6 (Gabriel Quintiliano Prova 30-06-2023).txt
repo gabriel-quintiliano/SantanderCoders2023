@@ -1,0 +1,18 @@
+//Questão 2
+//Resposta: a.true
+
+
+//Questão 3
+//Resposta: c. 8 2 128 10 12 32
+
+
+//Questão 4
+//Resposta: e. 1 1 2 1 2 3 1 2 3 4
+
+
+//Questão 5
+//Resposta: e. 0 2 4 6
+
+
+//Questão 6
+//Resposta: a.true
