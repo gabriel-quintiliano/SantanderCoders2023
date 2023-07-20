@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório</title>
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        main {
+            margin: 20px;
+        }
+
+        div {
+            padding-bottom: 30px;
+        }
+
+        #general-info > *:not(:last-child) {
+            margin-bottom: 15px;
+        }
+        
+        table,th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 4px 30px 2px;
+        }
+
+        tbody td {
+            text-align: right;
+            padding-right: 3px;
+        }
+        
+        #initial-value {
+            color: blue;
+            font-weight: 700;
+            text-align: center;
+        }
+        
+        th {
+            background-color: lightgray;
+            font-weight: 700;
+        }
+        
+        thead tr *:nth-child(1) {
+            background-color: white;
+            border: none;
+        }
+        
+        #month-balance td:nth-child(n+2) {
+            font-weight: 700;
+        }
+
+        #accumulated-balance td:nth-child(n+2) {
+            color: blue;
+        }
+
+        #general-report-info {
+            width: 1036px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        img {
+            align-self: flex-start;
+        }
+
+    </style>
+</head>
+<body>
+    <main>
+        <div id="general-report-info">
+            <div id="general-info">
+                <h2>Relatório Financeiro de Fluxo de Caixa</h2>
+                <h3 style="font-weight: normal;">Situação: Ambos, Intervalo: de: 02/2019 a 06/2019</h3>
+                <h3>Conta: CONTA PRINCIPAL</h3>
+            </div>
+            <img src="./logo.png" width="75" alt="logo da empresa">
+        </div>
+        <table cellspacing="0" cellpadding="0">
+            <thead>
+                <tr>
+                    <th scope="colgroup" colspan="2" style="border: none;">Saldo Inicial:</th>
+                    <th scope="colgroup" colspan="2">Fevereiro/19</th>
+                    <th scope="colgroup" colspan="2">Março/19</th>
+                    <th scope="colgroup" colspan="2">Maio/19</th>
+                    <th scope="colgroup" colspan="2">Junho/19</th>
+                </tr>
+                <tr>
+                    <td  id="initial-value" colspan="2">14.801,43</td>
+                    <th scope="col">Prev</th>
+                    <th scope="col">Real</th>
+                    <th scope="col">Prev</th>
+                    <th scope="col">Real</th>
+                    <th scope="col">Prev</th>
+                    <th scope="col">Real</th>
+                    <th scope="col">Prev</th>
+                    <th scope="col">Real</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row" colspan="2">Receitas</th>
+                    <td>10.500,00</td>
+                    <td>5.600,00</td>
+                    <td>10.900,00</td>
+                    <td>0,00</td>
+                    <td>10.500,00</td>
+                    <td>5.600,00</td>
+                    <td>10.900,00</td>
+                    <td>0,00</td>
+                </tr>
+                <tr>
+                    <th scope="row" colspan="2">Despesas</th>
+                    <td>1.050,00</td>
+                    <td>50,00</td>
+                    <td>1.000,00</td>
+                    <td>0,00</td>
+                    <td>1.050,00</td>
+                    <td>50,00</td>
+                    <td>1.000,00</td>
+                    <td>0,00</td>
+                </tr>
+                <tr id="month-balance">
+                    <th scope="row" colspan="2">Saldo mês</th>
+                    <td>9.450,00</td>
+                    <td>5.550,00</td>
+                    <td>9.900,00</td>
+                    <td>0,00</td>
+                    <td>9.450,00</td>
+                    <td>5.550,00</td>
+                    <td>9.900,00</td>
+                    <td>0,00</td>
+                </tr>
+                <tr id="accumulated-balance">
+                    <th scope="row" colspan="2">Saldo Acumulado</th>
+                    <td>24.251,43</td>
+                    <td>20.351,43</td>
+                    <td>34.151,43</td>
+                    <td>20.351,43</td>
+                    <td>34.151,43</td>
+                    <td>20.351,43</td>
+                    <td>34.151,43</td>
+                    <td>20.351,43</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
