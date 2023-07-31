@@ -123,10 +123,18 @@ footer h2 {
     #nav-items-wrapper {
         width: 800px;
     }
+
+    #main-header {
+        margin-bottom: 13px !important;
+    }
 }
 
 @media (min-width: 1200px) {
     #header-upper-row {
         padding-block: 30px;
+    }
+
+    #main-header {
+        margin-bottom: 25px !important;
     }
 }
