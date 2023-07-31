@@ -1,0 +1,202 @@
+/* RESET DE ALGUNS VALORES DEFAULT + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: system-ui;
+}
+
+body {
+    background-color: lightcoral;
+    min-height: 100vh;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    align-self: center;
+    font-size: 20px;
+    margin-block: 25px;
+}
+
+a {
+    text-decoration: none;
+    color: #000000A6;
+}
+
+a:hover {
+    color: #000000;
+}
+
+/* MINHAS CLASSES GERAIS QUE PODEM SER USADAS EM QUALQUER MOMENTO DO DOCUMENTO + - + - + - + - + - + - + */
+
+.d-flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.d-flex-row {
+    display: flex;
+}
+
+.d-grid-column {
+    display: grid;
+    grid-auto-flow: column;
+}
+
+.d-grid-row {
+    display: grid;
+}
+
+.grid-cv {
+    align-items: center;
+}
+
+.grid-ch {
+    justify-items: center;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.color-it {
+    background-color: beige;
+    border: 1px solid black;
+}
+
+/* ESTILOS DENTRO DE <header> + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + */
+#header-upper-row {
+    padding: 15px 10.5px;
+}
+
+#search-form {
+    justify-self: end;
+    height: 33px;
+    width: 80%;
+}
+
+#navegation-bar-header {
+    background-color: lightgray;
+    height: 35px;
+}
+
+#nav-items-wrapper {
+    width: 100%;
+    justify-content: space-between;
+    padding-inline: 50px;
+}
+
+/* ESTILOS DENTRO DE <main> + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + */
+main {
+    margin-top: 5px;
+}
+
+#main-form-wrapper {
+    padding-inline: 20px;
+}
+
+#form-buttons {
+    margin-block: 25px;
+    gap: 10px;
+    justify-content: center;
+}
+
+#form-buttons button {
+    width: 80px;
+}
+
+/* ESTILOS DENTRO DE <footer> + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + */
+footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    padding: 15px;
+    text-align: center;
+}
+
+footer * {
+    font-size: 13px;
+}
+
+footer h2 {
+    margin-bottom: 20px;
+}
+
+/* MEDIA QUERIES + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + */
+@media (min-width: 576px) {
+    main {
+        display: flex;
+        justify-content: center;
+    }
+
+    #main-form-wrapper {
+        width: 576px;
+        border-radius: 10px;
+
+    }
+
+    #navegation-bar-header {
+        margin-inline: 10.5px;
+    }
+
+    #search-form {
+        width: 70%;
+    }
+}
+
+@media (min-width: 768px) {
+    #navegation-bar-header {
+        margin-top: 8px;
+    }
+
+    #nav-items-wrapper {
+        width: 720px;
+    }
+
+    main {
+        padding-top: 25px;
+    }
+
+    #search-form {
+        width: 60%;
+    }
+    
+}
+
+@media (min-width: 992px) {
+    #header-upper-row {
+        margin-inline: auto;
+        width: 960px;
+    }
+    
+    #nav-items-wrapper {
+        width: 800px;
+    }
+}
+
+@media (min-width: 1200px) {
+    #header-upper-row {
+        width: 1140px;
+    }
+    
+    #header-upper-row {
+        padding-block: 30px;
+    }
+
+    #search-form {
+        width: 46%;
+    }
+}
+
+@media (min-width: 1400px) {
+    #header-upper-row {
+        width: 1320px;
+    }
+}

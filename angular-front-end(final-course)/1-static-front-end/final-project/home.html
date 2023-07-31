@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Clientes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"> <!-- Para uso de ícones -->
+    <link rel="stylesheet" href="home.css">
+
+</head>
+<body>
+    <header>
+        <section class=" color-it">
+            <div id="header-upper-row" class="container-lg m-auto row align-items-center">
+                <div class="col">
+                    <img id="header-logo" height="43" width="164" src="./img/generic-company-logo.png" alt="Generic Company">
+                </div>
+                <section class="col-5 col-md-4 col-xl-3">
+                    <form id="search-form" class="input-group" action="#">
+                            <input type="search" id="search-bar" class="form-control" placeholder="search"/>
+                            <button class="btn btn-primary" type="button"><i class="bi bi-search"></i></button>
+                    </form>
+                </section>
+            </div>
+        </section>
+
+        <nav id="navegation-bar-header" class="navbar navbar-expand-sm navegation-bar-header" aria-label="Third navbar example">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse navbar navbar-light color-it" id="navbarSupportedContent">
+                    <ul id="nav-items-wrapper" class="navbar-nav container-md nav-items-wrapper">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Menu 1</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Menu 2</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Menu 3</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Menu 4</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main class="container-fluid">
+        <section id="main-header" class="container-md row color-it align-items-center text-center m-auto">
+            <div id="fill-up-div-section-main-header" class="col-2 disappear_less600"></div> <!-- just to fill up the space and help center the items bellow-->
+            <h1 class="col text-center">Cadastro de Clientes</h1>
+            <button id="botao-add" class="btn btn-secondary col-4 col-sm-3 col-md-2 align-items-center nowrap custom-padding">
+                Adicionar <i class="bi bi-plus-circle"></i>
+            </button>
+        </section>
+        <div id="clients-info-wrapper" class="container-md">
+
+            <div id="noClientsReplacementForTable" class="alert alert-primary hidden text-center" role="alert">
+                Nenhum cliente cadastrado até o momento.
+            </div>
+
+            <table class="table color-it">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Data Nascimento</th>
+                        <th scope="col" class="disappear_less600">Email</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Thor</td>
+                        <td>10/05/2012</td>
+                        <td class="disappear_less600">thor@email.com</td>
+                        <td>
+                            <a href="./editar.html" class="edit-user btn btn-secondary align-items-center"><i class="bi bi-pencil-fill"></i></a>
+                            <button type="button" class="delete-user btn btn-secondary align-items-center" data-bs-toggle="modal" data-bs-target="#delete-confirmation"><i class="bi bi-trash3-fill"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Zarkos</td>
+                        <td>25/12/2015</td>
+                        <td class="disappear_less600">zarkos@email.com</td>
+                        <td>
+                            <a href="./editar.html" class="edit-user btn btn-secondary align-items-center"><i class="bi bi-pencil-fill"></i></a>
+                            <button type="button" class="delete-user btn btn-secondary align-items-center" data-bs-toggle="modal" data-bs-target="#delete-confirmation"><i class="bi bi-trash3-fill"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Mike</td>
+                        <td>25/04/2011</td>
+                        <td class="disappear_less600">mike@email.com</td>
+                        <td>
+                            <a href="./editar.html" class="edit-user btn btn-secondary align-items-center"><i class="bi bi-pencil-fill"></i></a>
+                            <button type="button" class="delete-user btn btn-secondary align-items-center" data-bs-toggle="modal" data-bs-target="#delete-confirmation"><i class="bi bi-trash3-fill"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Duque</td>
+                        <td>05/02/2023</td>
+                        <td class="disappear_less600">duque@email.com</td>
+                        <td>
+                            <a href="./editar.html" class="edit-user btn btn-secondary align-items-center"><i class="bi bi-pencil-fill"></i></a>
+                            <button type="button" class="delete-user btn btn-secondary align-items-center" data-bs-toggle="modal" data-bs-target="#delete-confirmation"><i class="bi bi-trash3-fill"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <footer class="container-fluid color-it text-center">
+        <h2><span class="nowrap">Projeto Final do Módulo</span> <span class="nowrap">Front-End Estático - ADA TECH</span></h2>
+        <div id="footer-secondary-content">
+            <span class="nowrap">Desenvolvido por Gabriel Quintiliano</span>
+            <span class="nowrap">© Copyright 2023. Todos os direitos reservados.</span>
+        </div>
+    </footer>
+
+    <!-- Modal de confirmação de exclusão de usuário-->
+    <div class="modal fade" id="delete-confirmation" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Excluir cliente</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Deseja realmente apagar o cliente?
+                </div>
+                <div class="modal-footer row">
+                    <button type="button" class="btn btn-secondary col" data-bs-dismiss="modal">Não</button>
+                    <button type="button" class="btn btn-primary col" data-bs-dismiss="modal" onclick="removeCurTableRow()">Sim</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="home.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>

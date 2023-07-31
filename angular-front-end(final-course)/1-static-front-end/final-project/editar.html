@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inserir / Alterar Cliente</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"> <!-- Para uso de ícones -->
+    <link rel="stylesheet" href="editar.css">
+
+</head>
+    <body>
+        <header>
+            <div class="color-it">
+                <section id="header-upper-row" class="d-grid-column grid-cv">
+                    <img id="header-logo" height="43" width="164" src="./img/generic-company-logo.png" alt="Generic Company">
+                    <form id="search-form" class="input-group" action="#">
+                        <input type="search" id="search-bar" class="form-control" placeholder="search"/>
+                        <button class="btn btn-primary" type="button"><i class="bi bi-search"></i></button>
+                    </form>
+                </section>
+            </div>
+            <nav id="navegation-bar-header" class="d-grid-row grid-ch">
+                <ul id="nav-items-wrapper" class="d-grid-column grid-cv">
+                    <li><a href="#">Menu 1</a></li>
+                    <li><a href="#">Menu 2</a></li>
+                    <li><a href="#">Menu 3</a></li>
+                    <li><a href="#">Menu 4</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main style="background-color: blue;">
+            <section id="main-form-wrapper" class="d-flex-col color-it">
+                <h1>Inserir / Alterar Cliente</h1>
+                <form class="needs-validation" novalidate>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Nome</span>
+                        <input type="text" class="form-control" placeholder="ex: Gabriel Quintiliano" aria-label="nome" required>
+                        <div class="invalid-feedback">
+                            Digite seu nome completo.
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Data de Nascimento</span>
+                        <input type="date" class="form-control" aria-label="data de nascimento" required>
+                        <div class="invalid-feedback">
+                            Selecione sua data de nascimento.
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Email</span>
+                        <input type="email" class="form-control" placeholder="examplo@email.com" aria-label="email" required>
+                        <div class="invalid-feedback">
+                            Digite um email válido.
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Sexo</span>
+                        <select class="form-select" aria-label="sexo" required>
+                            <option selected disabled></option>
+                            <option value="1">Masculino</option>
+                            <option value="2">Feminino</option>
+                            <option value="3">Prefiro não declarar</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Selecione uma das opções disponíveis.
+                        </div>
+                    </div>
+                    <div id="form-buttons" class="d-flex-row">
+                        <button type="reset" class="btn btn-primary">Cancelar</button>
+
+                        <!-- + - + - + - + - + - + DESCUBRA PORQUE MODAIS NÃO FUNCIONAM ATRAVES DE BOTOES DENTRO DO FORMULÁRIO + - + - + - + - + - + -->
+                    
+                        <button type="submit" class="btn btn-primary" >Salvar</button>
+                        <!-- data-bs-toggle="modal" data-bs-target="#data-saved-successfully" -->
+                    
+                    </div>
+                </form>
+            </section>
+        </main>
+        
+        <footer class="color-it">
+            <h2><span class="nowrap">Projeto Final do Módulo</span> <span class="nowrap">Front-End Estático - ADA TECH</span></h2>
+            <div id="footer-secondary-content">
+                <span class="nowrap">Desenvolvido por Gabriel Quintiliano</span>
+                <span class="nowrap">© Copyright 2023. Todos os direitos reservados.</span>
+            </div>
+        </footer>
+
+        <!-- Modal de confirmação de dados do cliente salvos -->
+        <div class="modal fade" id="data-saved-successfully" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Sucesso</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <br>
+                        Cliente salvo com sucesso.
+                        <br>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="editar.js" defer></script>
+        <script src="home.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    </body>
+</html>

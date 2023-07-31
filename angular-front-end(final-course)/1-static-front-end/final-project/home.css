@@ -1,0 +1,132 @@
+/* RESET DE ALGUNS VALORES DEFAULT DO DOCUMENTO E BOOTSTRAP*/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.container,
+.container-sm,
+.container-md,
+.container-lg,
+.container-xl {
+    padding-inline: 0;
+}
+
+.navbar {
+    padding: 0;
+}
+
+h1 {
+    font-size: 20px;
+    margin: 0;
+}
+
+body {
+    background-color: lightcoral;
+    min-height: 100%;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+/* MINHAS CLASSES GERAIS QUE PODEM SER USADAS EM QUALQUER MOMENTO DO DOCUMENTO */
+.nowrap {
+    white-space: nowrap;
+}
+
+.hidden {
+    display: none;
+}
+
+/* ESTILOS DENTRO DE <header> */
+
+#header-upper-row {
+    padding-block: 15px;
+}
+
+#header-logo {
+    max-height: 62px;
+    margin-right: auto;
+}
+
+/* EXCLUIR DEPOIS OU MUDA PARA CORES MAIS DESCENTES*/
+nav {
+    background-color: rgb(54, 172, 172);
+}
+
+.color-it {
+    background-color: beige;
+    border: 1px solid black;
+}
+
+/* ESTILOS DENTRO DE <main> */
+main {
+    padding-top: 5px;
+}
+
+#main-header {
+    margin-bottom: 5px;
+}
+
+/* ESTILOS DENTRO DE <footer> */
+
+footer {
+    position: absolute;
+    bottom: 0;
+    padding: 15px;
+}
+
+footer * {
+    font-size: 13px;
+}
+
+footer h2 {
+    margin-bottom: 20px;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 600px) {
+    #botao-add {
+        padding-block: 2px;
+    }
+
+    .disappear_less600 {
+        display: none;
+    }
+}
+
+@media (min-width: 576px) {
+    #nav-items-wrapper {
+        padding-inline: 50px;
+    }
+}
+
+@media (min-width: 768px) {
+    #navegation-bar-header {
+        margin-top: 8px;
+    }
+
+    main {
+        padding-top: 25px;
+    }
+    
+    #main-header {
+        margin-bottom: 8px !important;
+    }
+}
+
+@media (min-width: 992px) {
+    #nav-items-wrapper {
+        width: 800px;
+    }
+}
+
+@media (min-width: 1200px) {
+    #header-upper-row {
+        padding-block: 30px;
+    }
+}
