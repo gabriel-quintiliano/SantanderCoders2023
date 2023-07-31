@@ -148,6 +148,11 @@ footer h2 {
     #search-form {
         width: 70%;
     }
+
+    #form-buttons {
+        margin-top: 50px;
+        justify-content: end;
+    }
 }
 
 @media (min-width: 768px) {
