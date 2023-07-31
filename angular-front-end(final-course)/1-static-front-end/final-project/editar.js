@@ -7,23 +7,28 @@
 const successModalHTMLElem = document.getElementById('data-saved-successfully')
 const successModalObject = new bootstrap.Modal(successModalHTMLElem)
 
-// Fetch all the forms we want to apply custom Bootstrap validation styles to
-const forms = document.querySelectorAll('.needs-validation')
+// Pega o formulário que precisa de validação
+const form = document.querySelector('.needs-validation')
 
-// Loop over them and prevent submission
-// Array.from(forms).forEach(form => {
-    forms.forEach(form => {
-    form.addEventListener('submit', event => {
-        event.preventDefault();
+// Pega o botão cancelar (type="reset") de dentro do mesmo form
+const resetButton = form.querySelector("button[type='reset']")
+// Ao ser clicado, este vai além de resetar os valores, resetar a validação do bootstrap
+resetButton.addEventListener("click", () => form.classList.remove('was-validated'))
 
-        if (!form.checkValidity()) {
-            event.stopPropagation();
-            form.classList.add('was-validated')
-        } else {
-            successModalObject.show()
-            const closebutton = successModalHTMLElem.querySelector(".btn-close")
+// Para o modal do bootstrap não sumir imediatamente (visto o recarregamento da página depois do submit)
+// eu fiz com que o submit ocorre na verdade ao clicar no botão que fecha o modal (eu suspeito muito que
+// existem jeitos muito melhores de se fazer isso)
+form.addEventListener('submit', event => {
+    event.preventDefault();
 
-            closebutton.addEventListener("click", () => {form.submit()})
-        }
-    }, false)
-})
+    if (!form.checkValidity()) {
+        event.stopPropagation();
+        form.classList.add('was-validated')
+    } else {
+        successModalObject.show()
+        const closebutton = successModalHTMLElem.querySelector(".btn-close")
+
+        closebutton.addEventListener("click", () => {form.submit()})
+    }
+}, false)
+
