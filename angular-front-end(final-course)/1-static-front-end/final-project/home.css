@@ -69,7 +69,7 @@ main {
 }
 
 #main-header {
-    margin-bottom: 5px;
+    margin-bottom: 5px !important;
 }
 
 /* ESTILOS DENTRO DE <footer> */
@@ -113,9 +113,9 @@ footer h2 {
     main {
         padding-top: 25px;
     }
-    
+
     #main-header {
-        margin-bottom: 8px !important;
+        margin-bottom: 5px !important;
     }
 }
 
