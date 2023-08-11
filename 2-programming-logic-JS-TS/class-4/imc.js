@@ -1,11 +1,16 @@
 const evalBtn = document.getElementById("eval-btn");
 const imcElem = document.getElementById("imc");
-const msgFinal = document.getElementById("msgFinal")
+const condition = document.getElementById("condition")
 
 evalBtn.addEventListener('click', () => {
 
     const peso = Number(document.getElementById("peso").value);
     const altura = Number(document.getElementById("altura").value);
+
+    if (peso <= 0 || altura <= 0 || altura > 2.5) {
+        condition.textContent = "Informe corretamente seu peso e altura, por favor";
+        return
+    }
 
     let imc = peso / altura**2;
     /* Para limitar o IMC a 1 casa decimal imc.toFixed(1) seria uma opção, mas essa função acaba
@@ -31,5 +36,5 @@ evalBtn.addEventListener('click', () => {
         condition = "com obsidade grau II (severa)";
     }
 
-    msgFinal.textContent = `Seu imc é ${imc} e você está ${condition}`;
+    condition.textContent = `Seu imc é ${imc} e você está ${condition}`;
 })
