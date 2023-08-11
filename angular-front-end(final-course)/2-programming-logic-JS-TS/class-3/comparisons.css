@@ -1,0 +1,16 @@
+* {
+    text-align: center;
+}
+
+#result {
+    width: 7ch;
+    border-radius: 4px;
+}
+
+#operator {
+    width: 6ch;
+}
+
+#operand1, #operand2 {
+    width: 40px;
+}
