@@ -19,7 +19,7 @@ evalBtn.addEventListener('click', () => {
 
     let condition = "com obsidade grau III (mórbida)";
 
-    if (imc < 18.6) {
+    if (imc < 18.5) {
         condition = "abaixo do peso";
     } else if (imc < 25) {
         condition = "no peso ideal";
