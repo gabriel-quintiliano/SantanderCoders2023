@@ -6,14 +6,17 @@ const result = document.getElementById("result");
 
 evalBtn.addEventListener("click", () => {
     let expression = `${operand1.value} ${operator.value} ${operand2.value}`;
+    let booleanResult = eval(expression);
 
-    result.value = eval(expression);
+    result.value = booleanResult;
 
-    if (result.value === "true") {
-        result.style.backgroundColor = "#77E361";
-        result.style.color = "rgb(84, 84, 84)"
-    } else {
-        result.style.backgroundColor = "#DB4F4F"
-        result.style.color = "#E8E8E8"
+    if (booleanResult) {
+        result.style.backgroundColor = "#77E361"; // light green
+        result.style.color = "rgb(84, 84, 84)"; // greyish
+
+        return;
     }
+
+    result.style.backgroundColor = "#DB4F4F" // light red
+    result.style.color = "#E8E8E8" // greyish-white  
 })
