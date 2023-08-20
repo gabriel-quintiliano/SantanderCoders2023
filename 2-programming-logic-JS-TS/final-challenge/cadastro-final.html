@@ -13,16 +13,16 @@
         <section>
             <h2 style="display: none;">Cadastro de novos itens</h2>
             <hr>
-            <form id="prod-info-form" action="post">
-                <label for="prod-code">Código</label>
-                <input id="prod-code" type="text" required>
-                <label for="prod-name">Produto</label>
-                <input id="prod-name" type="text" required>
-                <label for="prod-qty">Quantidade</label>
-                <input id="prod-qty" type="number" required>
-                <label for="prod-un-price">Preço Unit</label>
-                <input id="prod-un-price" type="number" required>
-                <button id="register-btn" type="submit">Cadastrar</button>
+            <form id="prod-info-form">
+                <label for="prod-code-input">Código</label>
+                <input id="prod-code-input" type="text" required>
+                <label for="prod-name-input">Produto</label>
+                <input id="prod-name-input" type="text" required>
+                <label for="prod-qty-input">Quantidade</label>
+                <input id="prod-qty-input" type="number" min="0" placeholder="0" required>
+                <label for="prod-un-price-input">Preço Unit</label>
+                <input id="prod-un-price-input" type="number"  min="0" placeholder="0.00" required>
+                <button id="register-btn-input" type="submit">Cadastrar</button>
             </form>
             <hr>
         </section>
