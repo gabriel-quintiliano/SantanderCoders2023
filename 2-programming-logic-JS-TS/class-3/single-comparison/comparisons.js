@@ -9,7 +9,7 @@ evalBtn.addEventListener("click", () => {
     let booleanResult = eval(expression);
 
     result.value = booleanResult;
-
+    
     if (booleanResult) {
         result.style.backgroundColor = "#77E361"; // light green
         result.style.color = "rgb(84, 84, 84)"; // greyish

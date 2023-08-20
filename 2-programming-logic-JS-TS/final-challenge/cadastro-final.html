@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Final</title>
+    <script src="cadastro.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section>
+        <h1>Cadastro Final</h1>
+        <section>
+            <h2 style="display: none;">Cadastro de novos itens</h2>
+            <hr>
+            <form id="prod-info-form" action="post">
+                <label for="prod-code">Código</label>
+                <input id="prod-code" type="text" required>
+                <label for="prod-name">Produto</label>
+                <input id="prod-name" type="text" required>
+                <label for="prod-qty">Quantidade</label>
+                <input id="prod-qty" type="number" required>
+                <label for="prod-un-price">Preço Unit</label>
+                <input id="prod-un-price" type="number" required>
+                <button id="register-btn" type="submit">Cadastrar</button>
+            </form>
+            <hr>
+        </section>
+        <section>
+            <h2 style="display: none;">Itens cadastrados</h2>
+            <table id="items-table">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Produto</th>
+                        <th>Qtde</th>
+                        <th>Preço Unit</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="registered-items-wrapper"></tbody>
+            </table>
+        </section>
+    </section>
+</body>
+</html>

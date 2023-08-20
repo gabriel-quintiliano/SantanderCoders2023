@@ -1,0 +1,11 @@
+#prod-info-form {
+    display: grid;
+    grid-template-columns: 80px 180px;
+    justify-items: end;
+    row-gap: 5px;
+    padding-bottom: 15px;
+}
+
+#register-btn {
+    margin-top: 10px;
+}
