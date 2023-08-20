@@ -9,3 +9,12 @@
 #register-btn {
     margin-top: 10px;
 }
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.prod-qty, .prod-un-price, .prod-total {
+    text-align: center;
+}
