@@ -103,10 +103,3 @@ const myRegularTriangle = new RegularTriangle();
 const myRegularPentagon = new RegularPentagon();
 
 console.log(`this is a ${mySquare}`)
-
-
-console.log(meuQuadrado)
-console.log(String(meuQuadrado))
-console.log(String(new Square()))
-console.log(String(new RegularPentagon()))
-console.log(String(new RegularTriangle()))
