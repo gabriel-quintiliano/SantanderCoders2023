@@ -7,12 +7,12 @@ class Polygon {
     isRegular: boolean;
     isEquiangular: boolean;
     isEquilateral: boolean;
-    isCiclic: boolean;
+    isCyclic: boolean;
     classifications: Array<string>;
 
     private strRepr: string;
         
-    constructor(name: string, sides: number, isConcave: boolean, isConvex: boolean, isRegular: boolean, isEquiangular: boolean, isEquilateral: boolean, isCiclic: boolean) {
+    constructor(name: string, sides: number, isConcave: boolean, isConvex: boolean, isRegular: boolean, isEquiangular: boolean, isEquilateral: boolean, isCyclic: boolean) {
         this.name = name;
         this.sides = sides;
         this.isConcave = isConcave;
@@ -20,7 +20,7 @@ class Polygon {
         this.isRegular = isRegular;
         this.isEquiangular = isEquiangular;
         this.isEquilateral = isEquilateral;
-        this.isCiclic = isCiclic;
+        this.isCyclic = isCyclic;
         this.classifications = [];
 
         for (let [ key, value ] of Object.entries(this)) {
