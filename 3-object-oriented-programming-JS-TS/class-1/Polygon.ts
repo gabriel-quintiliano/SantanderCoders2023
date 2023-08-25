@@ -8,7 +8,7 @@ class Polygon {
     isEquiangular: boolean;
     isEquilateral: boolean;
     isCiclic: boolean;
-    caracteristics: Array<string>;
+    classifications: Array<string>;
 
     private strRepr: string;
         
@@ -21,17 +21,17 @@ class Polygon {
         this.isEquiangular = isEquiangular;
         this.isEquilateral = isEquilateral;
         this.isCiclic = isCiclic;
-        this.caracteristics = [];
+        this.classifications = [];
 
         for (let [ key, value ] of Object.entries(this)) {
             if (typeof value == "boolean") {
                 if (value) {
-                    this.caracteristics.push(key.replace("is","").toLowerCase())
+                    this.classifications.push(key.replace("is","").toLowerCase())
                 }
             }
         }
 
-        this.strRepr = `${name} (${sides} sides) which is ${this.caracteristics.join(", ")}`
+        this.strRepr = `${name} (${sides} sides) which is ${this.classifications.join(", ")}`
     }
     
     toString(): string {
@@ -98,7 +98,13 @@ class RegularPentagon extends RegularPolygon {
     }
 }
 
-const meuQuadrado = new Square();
+const mySquare = new Square();
+const myRegularTriangle = new RegularTriangle();
+const myRegularPentagon = new RegularPentagon();
+
+console.log(`this is a ${mySquare}`)
+
+
 console.log(meuQuadrado)
 console.log(String(meuQuadrado))
 console.log(String(new Square()))
