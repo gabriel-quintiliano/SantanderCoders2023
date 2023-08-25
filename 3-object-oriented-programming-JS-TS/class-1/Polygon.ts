@@ -12,7 +12,7 @@ class Polygon {
 
     private strRepr: string;
         
-    constructor(name: string, sides: number, isConcave: boolean, isConvex: boolean, isEquiangular: boolean, isEquilateral: boolean, isRegular: boolean, isCiclic: boolean) {
+    constructor(name: string, sides: number, isConcave: boolean, isConvex: boolean, isRegular: boolean, isEquiangular: boolean, isEquilateral: boolean, isCiclic: boolean) {
         this.name = name;
         this.sides = sides;
         this.isConcave = isConcave;
@@ -38,6 +38,17 @@ class Polygon {
     toString(): string {
         return this.strRepr;
     }
+}
+
+class IrregularPolygon extends Polygon {
+
+    angles: Array<number>;
+
+    constructor(name: string, sides: number, angles: Array<number>, isConcave: boolean, isConvex: boolean, isEquiangular: boolean, isEquilateral: boolean) {
+        super(name, sides, isConcave, isConvex, false, isEquiangular, isEquilateral, false);
+        this.angles = angles;
+    }
+
 }
 
 class RegularPolygon extends Polygon {
