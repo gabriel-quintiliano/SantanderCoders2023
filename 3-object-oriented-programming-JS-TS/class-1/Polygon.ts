@@ -4,25 +4,39 @@ class Polygon {
     sides: number;
     isConcave: boolean;
     isConvex: boolean;
+    isRegular: boolean;
     isEquiangular: boolean;
     isEquilateral: boolean;
-    isRegular: boolean;
     isCiclic: boolean;
+    caracteristics: Array<string>;
+
+    private strRepr: string;
         
     constructor(name: string, sides: number, isConcave: boolean, isConvex: boolean, isEquiangular: boolean, isEquilateral: boolean, isRegular: boolean, isCiclic: boolean) {
         this.name = name;
         this.sides = sides;
         this.isConcave = isConcave;
         this.isConvex = isConvex;
+        this.isRegular = isRegular;
         this.isEquiangular = isEquiangular;
         this.isEquilateral = isEquilateral;
-        this.isRegular = isRegular;
         this.isCiclic = isCiclic;
+        this.caracteristics = [];
+
+        for (let [ key, value ] of Object.entries(this)) {
+            if (typeof value == "boolean") {
+                if (value) {
+                    this.caracteristics.push(key.replace("is","").toLowerCase())
+                }
+            }
+        }
+
+        this.strRepr = `${name} (${sides} sides) which is ${this.caracteristics.join(", ")}`
     }
     
     
     toString(): string {
-        return `This is a ${this.name} hence it has ${this.sides}`;
+        return this.strRepr;
     }
 }
 
@@ -38,10 +52,6 @@ class RegularPolygon extends Polygon {
         this.intAngle = RegularPolygon.getIntAngle(sides);
         this.extAngle = RegularPolygon.getExtAngle(sides);
         this.intAngleSum = RegularPolygon.getIntAngleSum(sides);
-    }
-
-    toString() {
-        return `This is a ${this.name} hence it has ${this.sides} with internal angles of ${this.intAngle} degrees and external angles of ${this.extAngle}`;
     }
 
     static getIntAngle(sides: number): number {
@@ -78,10 +88,9 @@ class RegularPentagon extends RegularPolygon {
     }
 }
 
-
-// const meuQuadrado = new Square();
-// console.log(meuQuadrado)
-// console.log(String(meuQuadrado))
+const meuQuadrado = new Square();
+console.log(meuQuadrado)
+console.log(String(meuQuadrado))
 console.log(String(new Square()))
 console.log(String(new RegularPentagon()))
 console.log(String(new RegularTriangle()))
