@@ -102,4 +102,6 @@ const mySquare = new Square();
 const myRegularTriangle = new RegularTriangle();
 const myRegularPentagon = new RegularPentagon();
 
-console.log(`this is a ${mySquare}`)
+console.log(`this is a ${mySquare}`);
+console.log(`${myRegularPentagon.name} has ${myRegularPentagon.sides} with internal angles of ${myRegularPentagon.intAngle} and external angles of ${myRegularPentagon.extAngle}`);
+console.log(`A 21-sided regular polygon has internal angles of ${RegularPolygon.getIntAngle(21)} degrees`)
