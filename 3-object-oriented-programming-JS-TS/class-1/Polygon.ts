@@ -34,7 +34,6 @@ class Polygon {
         this.strRepr = `${name} (${sides} sides) which is ${this.caracteristics.join(", ")}`
     }
     
-    
     toString(): string {
         return this.strRepr;
     }
@@ -42,11 +41,11 @@ class Polygon {
 
 class IrregularPolygon extends Polygon {
 
-    angles: Array<number>;
+    intAngles: Array<number>;
 
-    constructor(name: string, sides: number, angles: Array<number>, isConcave: boolean, isConvex: boolean, isEquiangular: boolean, isEquilateral: boolean) {
+    constructor(name: string, sides: number, intAngles: Array<number>, isConcave: boolean, isConvex: boolean, isEquiangular: boolean, isEquilateral: boolean) {
         super(name, sides, isConcave, isConvex, false, isEquiangular, isEquilateral, false);
-        this.angles = angles;
+        this.intAngles = intAngles;
     }
 
 }
