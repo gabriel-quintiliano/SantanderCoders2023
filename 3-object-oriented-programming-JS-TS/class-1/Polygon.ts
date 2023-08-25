@@ -65,15 +65,18 @@ class RegularPolygon extends Polygon {
     }
 
     static getIntAngle(sides: number): number {
-        return 180 - 360 / sides
+        const result: number = 180 - 360 / sides;
+        return Number(result.toFixed(2))
     }
 
     static getExtAngle(sides: number): number {
-        return 360 / sides;
+        const result: number = 360 / sides;
+        return Number(result.toFixed(2))
     }
 
     static getIntAngleSum(sides: number): number {
-        return 180 * sides - 360
+        const result: number = 180 * sides - 360;
+        return Number(result.toFixed(2))
     }
 }
 
