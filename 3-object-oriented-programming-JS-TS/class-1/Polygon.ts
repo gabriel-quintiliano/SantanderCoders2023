@@ -2,6 +2,7 @@ class Polygon {
 
     name: string;
     sides: number;
+    area?: number;
     isConcave: boolean;
     isConvex: boolean;
     isRegular: boolean;
@@ -14,9 +15,10 @@ class Polygon {
 
     private strRepr: string;
         
-    constructor(name: string, sides: number, isConcave: boolean, isConvex: boolean, isRegular: boolean, isEquiangular: boolean, isEquilateral: boolean, isCyclic: boolean, isSimple: boolean, isComplex: boolean) {
+    constructor(name: string, sides: number, isConcave: boolean, isConvex: boolean, isRegular: boolean, isEquiangular: boolean, isEquilateral: boolean, isCyclic: boolean, isSimple: boolean, isComplex: boolean, area?: number) {
         this.name = name;
         this.sides = sides;
+        this.area = area;
         this.isConcave = isConcave;
         this.isConvex = isConvex;
         this.isRegular = isRegular;
@@ -66,6 +68,7 @@ class RegularPolygon extends Polygon {
         this.intAngle = RegularPolygon.getIntAngle(sides);
         this.extAngle = RegularPolygon.getExtAngle(sides);
         this.intAngleSum = RegularPolygon.getIntAngleSum(sides);
+        this.area = 12;
     }
 
     static getIntAngle(sides: number): number {
