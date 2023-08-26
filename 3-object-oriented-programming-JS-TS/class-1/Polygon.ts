@@ -8,11 +8,13 @@ class Polygon {
     isEquiangular: boolean;
     isEquilateral: boolean;
     isCyclic: boolean;
+    isSimple: boolean;
+    isComplex: boolean;
     classifications: Array<string>;
 
     private strRepr: string;
         
-    constructor(name: string, sides: number, isConcave: boolean, isConvex: boolean, isRegular: boolean, isEquiangular: boolean, isEquilateral: boolean, isCyclic: boolean) {
+    constructor(name: string, sides: number, isConcave: boolean, isConvex: boolean, isRegular: boolean, isEquiangular: boolean, isEquilateral: boolean, isCyclic: boolean, isSimple: boolean, isComplex: boolean) {
         this.name = name;
         this.sides = sides;
         this.isConcave = isConcave;
@@ -21,6 +23,8 @@ class Polygon {
         this.isEquiangular = isEquiangular;
         this.isEquilateral = isEquilateral;
         this.isCyclic = isCyclic;
+        this.isSimple = isSimple;
+        this.isComplex = isComplex;
         this.classifications = [];
 
         for (let [ key, value ] of Object.entries(this)) {
@@ -43,8 +47,8 @@ class IrregularPolygon extends Polygon {
 
     intAngles: Array<number>;
 
-    constructor(name: string, sides: number, intAngles: Array<number>, isConcave: boolean, isConvex: boolean, isEquiangular: boolean, isEquilateral: boolean) {
-        super(name, sides, isConcave, isConvex, false, isEquiangular, isEquilateral, false);
+    constructor(name: string, sides: number, intAngles: Array<number>, isConcave: boolean, isConvex: boolean, isEquiangular: boolean, isEquilateral: boolean, isSimple: boolean, isComplex: boolean) {
+        super(name, sides, isConcave, isConvex, false, isEquiangular, isEquilateral, false, isSimple, isComplex);
         this.intAngles = intAngles;
     }
 
@@ -58,7 +62,7 @@ class RegularPolygon extends Polygon {
     extAngleSum: number = 360;
 
     constructor(name: string, sides: number) {
-        super(name, sides, true, false, true, true, true, true);
+        super(name, sides, true, false, true, true, true, true, true, false);
         this.intAngle = RegularPolygon.getIntAngle(sides);
         this.extAngle = RegularPolygon.getExtAngle(sides);
         this.intAngleSum = RegularPolygon.getIntAngleSum(sides);
