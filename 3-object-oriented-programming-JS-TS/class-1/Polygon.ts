@@ -4,7 +4,6 @@ interface IRegularPolygonHeir {
 }
 
 class Polygon {
-
     name: string;
     sides: number;
     area?: number;
@@ -53,7 +52,6 @@ class Polygon {
 }
 
 class IrregularPolygon extends Polygon {
-
     intAngles: Array<number>;
 
     constructor(name: string, sides: number, intAngles: Array<number>, isConcave: boolean, isConvex: boolean, isEquiangular: boolean, isEquilateral: boolean, isSimple: boolean, isComplex: boolean) {
@@ -64,7 +62,6 @@ class IrregularPolygon extends Polygon {
 }
 
 class RegularPolygon extends Polygon {
-
     intAngle: number;
     extAngle: number;
     intAngleSum: number;
@@ -94,21 +91,18 @@ class RegularPolygon extends Polygon {
 }
 
 class Square extends RegularPolygon {
-
     constructor() {
         super("square", 4)
     }
 }
 
 class RegularTriangle extends RegularPolygon {
-
     constructor() {
         super("Triangle", 3)
     }
 }
 
 class RegularPentagon extends RegularPolygon {
-
     constructor() {
         super("Pentagon", 5)
     }
