@@ -6,8 +6,8 @@ interface IRegularPolygonHeir {
 class Polygon {
     name: string;
     sides: number;
-    area?: number;
-    perimeter?: number;
+    area: number | Function | undefined;
+    perimeter: number | Function | undefined;
     isConcave: boolean;
     isConvex: boolean;
     isRegular: boolean;
@@ -33,21 +33,27 @@ class Polygon {
         this.isCyclic = isCyclic;
         this.isSimple = isSimple;
         this.isComplex = isComplex;
-        this.classifications = [];
-
-        for (let [ key, value ] of Object.entries(this)) {
-            if (typeof value == "boolean") {
-                if (value) {
-                    this.classifications.push(key.replace("is","").toLowerCase())
-                }
-            }
-        }
+        this.classifications = this.setClassifications(this);
 
         this.strRepr = `${name} (${sides} sides) which is ${this.classifications.join(", ")}`
     }
     
     toString(): string {
         return this.strRepr;
+    }
+
+    private setClassifications(instObj: Polygon): Array<string> {
+        const classifications: Array<string> = [];
+
+        for (let [ key, value ] of Object.entries(instObj)) {
+            if (typeof value == "boolean") {
+                if (value) {
+                    classifications.push(key.replace("is","").toLowerCase());
+                }
+            }
+        }
+
+        return classifications;
     }
 }
 
@@ -153,16 +159,16 @@ class RegularPentagon extends RegularPolygon {
     }
 }
 
-// const mySquare = new Square();
-// const myRegularTriangle = new RegularTriangle();
-// const myRegularPentagon = new RegularPentagon();
+const mySquare = new Square();
+const myRegularTriangle = new RegularTriangle();
+const myRegularPentagon = new RegularPentagon();
 
-// console.log(`this is a ${mySquare}`);
-// console.log(`${myRegularPentagon.name} has ${myRegularPentagon.sides} with internal angles of ${myRegularPentagon.intAngle} and external angles of ${myRegularPentagon.extAngle}`);
-// console.log(`A 21-sided regular polygon has internal angles of ${RegularPolygon.getIntAngle(21)} degrees`)
+console.log(`this is a ${mySquare}`);
+console.log(`${myRegularPentagon.name} has ${myRegularPentagon.sides} with internal angles of ${myRegularPentagon.intAngle} and external angles of ${myRegularPentagon.extAngle}`);
+console.log(`A 21-sided regular polygon has internal angles of ${RegularPolygon.getIntAngle(21)} degrees`)
 
-console.log(`Area of a 4-sided polygon with side 2 is: ${RegularPolygon.getArea(4,2)}`)
-console.log(`Area of a 4-sided polygon with side 3 is: ${RegularPolygon.getArea(4,3)}`)
-console.log(`Area of a 4-sided polygon with side 4 is: ${RegularPolygon.getArea(4,4)}`)
-console.log(`Area of a 5-sided polygon with side 4 is: ${RegularPolygon.getArea(5,4)}`)
-console.log(`Area of a 6-sided polygon with side 10 is: ${RegularPolygon.getArea(6,10)}`)
+// console.log(`Area of a 4-sided polygon with side 2 is: ${RegularPolygon.getArea(4,2)}`)
+// console.log(`Area of a 4-sided polygon with side 3 is: ${RegularPolygon.getArea(4,3)}`)
+// console.log(`Area of a 4-sided polygon with side 4 is: ${RegularPolygon.getArea(4,4)}`)
+// console.log(`Area of a 5-sided polygon with side 4 is: ${RegularPolygon.getArea(5,4)}`)
+// console.log(`Area of a 6-sided polygon with side 10 is: ${RegularPolygon.getArea(6,10)}`)
