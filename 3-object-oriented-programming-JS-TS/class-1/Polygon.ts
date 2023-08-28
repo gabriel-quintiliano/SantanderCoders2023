@@ -3,10 +3,14 @@ interface IRegularPolygonHeir {
     getPerimeter(): number;
 }
 
+interface teste {
+    area: number;
+}
+
 class Polygon {
     name: string;
     sides: number;
-    area: number | Function | undefined;
+    // area: number | Function | undefined;
     perimeter: number | Function | undefined;
     isConcave: boolean;
     isConvex: boolean;
@@ -23,7 +27,7 @@ class Polygon {
     constructor(name: string, sides: number, isConcave: boolean, isConvex: boolean, isRegular: boolean, isEquiangular: boolean, isEquilateral: boolean, isCyclic: boolean, isSimple: boolean, isComplex: boolean, perimeter?: number, area?: number) {
         this.name = name;
         this.sides = sides;
-        this.area = area;
+        // this.area = area;
         this.perimeter = perimeter;
         this.isConcave = isConcave;
         this.isConvex = isConvex;
@@ -78,6 +82,14 @@ class RegularPolygon extends Polygon {
         this.intAngle = RegularPolygon.getIntAngle(sides);
         this.extAngle = RegularPolygon.getExtAngle(sides);
         this.intAngleSum = RegularPolygon.getIntAngleSum(sides);
+    }
+
+    get area(): number {
+        return this.sides * this.sides;
+    }
+
+    set area(value: number) {
+        this.area = value;
     }
 
     static getIntAngle(sides: number): number {
@@ -163,6 +175,7 @@ const mySquare = new Square();
 const myRegularTriangle = new RegularTriangle();
 const myRegularPentagon = new RegularPentagon();
 
+console.log(mySquare)
 console.log(`this is a ${mySquare}`);
 console.log(`${myRegularPentagon.name} has ${myRegularPentagon.sides} with internal angles of ${myRegularPentagon.intAngle} and external angles of ${myRegularPentagon.extAngle}`);
 console.log(`A 21-sided regular polygon has internal angles of ${RegularPolygon.getIntAngle(21)} degrees`)
