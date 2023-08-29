@@ -1,3 +1,76 @@
+interface IRegularPolygonHeir {
+    getArea(): number;
+    getPerimeter(): number;
+}
+
+interface teste {
+    area: number;
+}
+
+class Polygon {
+    name: string;
+    sides: number;
+    // area: number | Function | undefined;
+    perimeter: number | Function | undefined;
+    isConcave: boolean;
+    isConvex: boolean;
+    isRegular: boolean;
+    isEquiangular: boolean;
+    isEquilateral: boolean;
+    isCyclic: boolean;
+    isSimple: boolean;
+    isComplex: boolean;
+    classifications: Array<string>;
+
+    private strRepr: string;
+        
+    constructor(name: string, sides: number, isConcave: boolean, isConvex: boolean, isRegular: boolean, isEquiangular: boolean, isEquilateral: boolean, isCyclic: boolean, isSimple: boolean, isComplex: boolean, perimeter?: number, area?: number) {
+        this.name = name;
+        this.sides = sides;
+        // this.area = area;
+        this.perimeter = perimeter;
+        this.isConcave = isConcave;
+        this.isConvex = isConvex;
+        this.isRegular = isRegular;
+        this.isEquiangular = isEquiangular;
+        this.isEquilateral = isEquilateral;
+        this.isCyclic = isCyclic;
+        this.isSimple = isSimple;
+        this.isComplex = isComplex;
+        this.classifications = this.setClassifications(this);
+
+        this.strRepr = `${name} (${sides} sides) which is ${this.classifications.join(", ")}`
+    }
+    
+    toString(): string {
+        return this.strRepr;
+    }
+
+    private setClassifications(instObj: Polygon): Array<string> {
+        const classifications: Array<string> = [];
+
+        for (let [ key, value ] of Object.entries(instObj)) {
+            if (typeof value == "boolean") {
+                if (value) {
+                    classifications.push(key.replace("is","").toLowerCase());
+                }
+            }
+        }
+
+        return classifications;
+    }
+}
+
+class IrregularPolygon extends Polygon {
+    intAngles: Array<number>;
+
+    constructor(name: string, sides: number, intAngles: Array<number>, isConcave: boolean, isConvex: boolean, isEquiangular: boolean, isEquilateral: boolean, isSimple: boolean, isComplex: boolean) {
+        super(name, sides, isConcave, isConvex, false, isEquiangular, isEquilateral, false, isSimple, isComplex);
+        this.intAngles = intAngles;
+    }
+
+}
+
 class RegularPolygon extends Polygon {
     intAngle: number;
     extAngle: number;
@@ -88,3 +161,36 @@ class RegularPolygon extends Polygon {
         return apothem;
     }
 }
+
+class Square extends RegularPolygon {
+    constructor() {
+        super("square", 4)
+    }
+}
+
+class RegularTriangle extends RegularPolygon {
+    constructor() {
+        super("Triangle", 3)
+    }
+}
+
+class RegularPentagon extends RegularPolygon {
+    constructor() {
+        super("Pentagon", 5)
+    }
+}
+
+const mySquare = new Square();
+const myRegularTriangle = new RegularTriangle();
+const myRegularPentagon = new RegularPentagon();
+
+console.log(mySquare)
+console.log(`this is a ${mySquare}`);
+console.log(`${myRegularPentagon.name} has ${myRegularPentagon.sides} with internal angles of ${myRegularPentagon.intAngle} and external angles of ${myRegularPentagon.extAngle}`);
+console.log(`A 21-sided regular polygon has internal angles of ${RegularPolygon.getIntAngle(21)} degrees`)
+
+// console.log(`Area of a 4-sided polygon with side 2 is: ${RegularPolygon.getArea(4,2)}`)
+// console.log(`Area of a 4-sided polygon with side 3 is: ${RegularPolygon.getArea(4,3)}`)
+// console.log(`Area of a 4-sided polygon with side 4 is: ${RegularPolygon.getArea(4,4)}`)
+// console.log(`Area of a 5-sided polygon with side 4 is: ${RegularPolygon.getArea(5,4)}`)
+// console.log(`Area of a 6-sided polygon with side 10 is: ${RegularPolygon.getArea(6,10)}`)
