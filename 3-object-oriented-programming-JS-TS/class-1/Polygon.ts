@@ -76,21 +76,30 @@ class RegularPolygon extends Polygon {
     extAngle: number;
     intAngleSum: number;
     extAngleSum: number = 360;
+    area: number;
 
     constructor(name: string, sides: number) {
         super(name, sides, true, false, true, true, true, true, true, false);
         this.intAngle = RegularPolygon.getIntAngle(sides);
         this.extAngle = RegularPolygon.getExtAngle(sides);
         this.intAngleSum = RegularPolygon.getIntAngleSum(sides);
+
+        Object.defineProperties(this, {
+            area: {get: this.getInstanceArea(this.sides, 10)}
+        })
     }
 
-    get area(): number {
-        return this.sides * this.sides;
+    private getInstanceArea(sides: number, sideLen: number): number {
+
     }
 
-    set area(value: number) {
-        this.area = value;
-    }
+    // get area(): number {
+    //     return this.sides * this.sides;
+    // }
+
+    // set area(value: number) {
+    //     this.area = value;
+    // }
 
     static getIntAngle(sides: number): number {
         const result: number = 180 - 360 / sides;
