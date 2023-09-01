@@ -1,4 +1,9 @@
-class ContaBancaria {
+interface IOperacoesBancarias {
+    depositar: (valor: number) => void;
+    sacar: (valor: number) => void;
+}
+
+class ContaBancaria implements IOperacoesBancarias {
 
     titular: string;
     private numeroConta: string;
@@ -10,12 +15,16 @@ class ContaBancaria {
         this.saldo = saldoInicial;
     }
 
+    getNumeroConta() {
+        return this.numeroConta;
+    }
+
     getSaldo() {
-        return this.saldo
+        return this.saldo;
     }
 
     consultarSaldo() {
-        return this.saldo
+        return this.saldo;
     }
 
     depositar(valor: number) {
@@ -28,12 +37,13 @@ class ContaBancaria {
     }
 }
 
-class ContaPoupanca extends ContaBancaria {
+class ContaPoupanca extends ContaBancaria implements IOperacoesBancarias {
 
     juros: number;
 
-    constructor(titular: string, numeroConta: string, saldoInicial: number) {
+    constructor(titular: string, numeroConta: string, saldoInicial: number, porcentagemJurosMensal: number) {
         super(titular, numeroConta, saldoInicial);
+        this.juros = porcentagemJurosMensal;
     }
 
     consultarSaldo() {
