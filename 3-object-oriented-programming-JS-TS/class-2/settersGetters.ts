@@ -7,13 +7,11 @@ abstract class AMyClass implements IMyClass{
     abstract get myProperty(): number;
 }
 
-class MyClass extends AMyClass {
+class MyClass {
     
-    private _myProperty: number;
-    private x: number = 10;
+    private _myProperty: number = 0;
+
     constructor(num: number) {
-        super()
-        this.x = num;
         this.myProperty = num;
     }
   
@@ -27,6 +25,14 @@ class MyClass extends AMyClass {
     }
 
   }
+
+class MyOtherClass extends Myclass{
+
+    constructor(num: number){
+      super(num)
+      this.someProp = (() => {this._myProperty})
+    }
+}
 
 //   class MyClassHeir extends MyClass {
 
