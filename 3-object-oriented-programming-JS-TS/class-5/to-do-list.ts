@@ -8,7 +8,7 @@ class Tarefa {
         this.prioridade = prioridade ?? "não definida";
     }
 
-    toString() {
+    toString(): string {
         return `task: ${this.descricao}\n      prioridade: ${this.prioridade}\n      status: ${this.concluida ? "Concluída" : "Pendente"}\n`
     }
 }
