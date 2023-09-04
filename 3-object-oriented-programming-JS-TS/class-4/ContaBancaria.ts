@@ -15,25 +15,30 @@ class ContaBancaria implements IOperacoesBancarias {
         this.saldo = saldoInicial;
     }
 
-    getNumeroConta() {
+    getNumeroConta(): string {
         return this.numeroConta;
     }
 
-    getSaldo() {
+    getSaldo(): number {
         return this.saldo;
     }
 
-    consultarSaldo() {
+    consultarSaldo(): number {
         return this.saldo;
     }
 
-    depositar(valor: number) {
+    depositar(valor: number): void {
         this.saldo += valor;
+        Logger.logOperation(this, "Depósito", valor)
     }
 
-    sacar(valor: number) {
-        if (valor > this.saldo) return // implementar --> throw new SaldoInsuficiente()
+    sacar(valor: number): void {
+        if (valor > this.saldo) {
+            Logger.logMessage(this, "Operação Cancelada [saldo insuficiente]")
+            return
+        };
         this.saldo -= valor;
+        Logger.logOperation(this, "Saque", valor)
     }
 }
 
@@ -47,6 +52,28 @@ class ContaPoupanca extends ContaBancaria implements IOperacoesBancarias {
     }
 
     consultarSaldo() {
-        return this.getSaldo();
+        return this.getSaldo() * this.juros / 100;
     }
 }
+
+class Logger {
+    static logOperation(conta: ContaBancaria, operationName: string, valor: number): void {
+        console.log(`${operationName} de R$${valor} na conta ${conta.getNumeroConta()}\nNovo total = R$${conta.getSaldo()}\n`)
+    }
+
+    static logMessage(conta: ContaBancaria, message: string) {
+        console.log(`Conta: ${conta.getNumeroConta()}: ${message}`)
+    }
+}
+
+const contaA = new ContaBancaria("Gabriel Quintiliano", "123456", 15)
+contaA.sacar(10)
+contaA.depositar(100)
+
+const contaB = new ContaBancaria("Ramos Guimarães", "789012", 225)
+contaB.sacar(1000)
+contaB.depositar(100)
+
+const contaC = new ContaBancaria("Ramos Guimarães", "789012", 430)
+contaC.sacar(100)
+contaC.depositar(198)
