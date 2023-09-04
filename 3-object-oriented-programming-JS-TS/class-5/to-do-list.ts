@@ -1,5 +1,3 @@
-// Nesse arquivo eu fiz só o mínimo descrito na atividade, no outro arquivo 'ToDoListV2.ts' (neste mesmo diretório)
-// eu construí com mais liberdade classes semelhantes mas com bem mais robustas.
 class Tarefa {
     descricao: string;
     prioridade: string;
@@ -7,7 +5,7 @@ class Tarefa {
 
     constructor(descricao: string, prioridade?: string) {
         this.descricao = descricao;
-        this.prioridade = prioridade ?? "baixa";
+        this.prioridade = prioridade ?? "não definida";
     }
 
     toString() {
