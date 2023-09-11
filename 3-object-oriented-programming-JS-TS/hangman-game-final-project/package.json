@@ -1,0 +1,13 @@
+{
+  "name": "hangman-game-final-project",
+  "version": "1.0.0",
+  "description": "Final project of 'object oriented programming (JS/TS)' module in ADA TECH's Santader Coders 2023 - Angular course",
+  "main": "./dist/main.js",
+  "type": "module",
+  "scripts": {
+    "start": "tsc --watch"
+  },
+  "keywords": ["game","hangman","hangman game","browser game"],
+  "author": "Gabriel Quintiliano",
+  "license": "ISC"
+}
