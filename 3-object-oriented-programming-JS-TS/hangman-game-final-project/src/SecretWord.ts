@@ -1,3 +1,5 @@
+type LetterMatches = {total: Number, indexes: Array<number>};
+
 class secretWord {
     private secretWord: string;
     get length() {
@@ -10,5 +12,17 @@ class secretWord {
 
     private getSecretWord(difficulty: number): string {
         return "";
+    }
+
+    guessLetter(letter: string): LetterMatches {
+
+        const matches: LetterMatches = {total: 0, indexes: []};
+        let letterIndex: number;
+
+        while ((letterIndex = this.secretWord.indexOf(letter)) != -1) {
+            matches.indexes.push(letterIndex);
+        }
+
+        return matches;
     }
 }
