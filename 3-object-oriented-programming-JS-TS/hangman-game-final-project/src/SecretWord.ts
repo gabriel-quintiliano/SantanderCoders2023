@@ -1,11 +1,16 @@
 type LetterMatches = {total: number, indexes: Array<number>};
 
-class secretWord {
+class SecretWord {
     private secretWord: string;
     guessedLetters: number = 0;
-    get length() {
+
+    get length(): number {
         return this.secretWord.length;
     };
+
+    get wasGuessed(): boolean {
+        return this.secretWord.length === this.guessedLetters;
+    }
 
     constructor(difficulty: number) { //use enums aqui
         this.secretWord = this.getSecretWord(difficulty);
@@ -26,8 +31,4 @@ class secretWord {
 
         return matches;
     }
-
-    // → attr guessedLetters: number
-    // → attr guessedWord: boolean
-
 }
