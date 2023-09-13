@@ -1,6 +1,9 @@
 import SecretWord, { LetterMatches } from "./SecretWord.js";
 
-interface IPlayer {
+export interface IPlayer {
+    name: string;
+    score: number;
+    id: number;
     guessLetter(letter: string, secretWord: SecretWord): LetterMatches | null;
 }
 
@@ -37,7 +40,7 @@ export class ComputerPlayer extends Player implements IPlayer {
         this.name = `${this.name}ID${this.id}`
     }
     
-    guessLetter(letter: string, secretWord: SecretWord): boolean{
-        return true;
+    guessLetter(letter: string, secretWord: SecretWord): LetterMatches | null{
+        return null;
     }
 }
