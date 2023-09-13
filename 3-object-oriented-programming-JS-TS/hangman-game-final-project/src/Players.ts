@@ -11,7 +11,7 @@ class Player {
     }
 }
 
-class HumanPlayer extends Player implements IPlayer {
+export class HumanPlayer extends Player implements IPlayer {
     constructor(name: string) {
         super(name)
     }
@@ -21,7 +21,7 @@ class HumanPlayer extends Player implements IPlayer {
     }
 }
 
-class ComputerPlayer extends Player implements IPlayer {
+export class ComputerPlayer extends Player implements IPlayer {
     constructor(name: string) {
         super(name);
     }

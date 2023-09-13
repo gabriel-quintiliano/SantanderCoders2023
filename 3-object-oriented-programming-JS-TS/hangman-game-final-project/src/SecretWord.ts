@@ -1,6 +1,6 @@
 type LetterMatches = {total: number, indexes: Array<number>};
 
-class SecretWord {
+export default class SecretWord {
     private secretWord: string;
     guessedLetters: number = 0;
 
