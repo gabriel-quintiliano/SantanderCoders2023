@@ -1,3 +1,4 @@
+import * as readline from "readline-sync"
 import SecretWord, { LetterMatches } from "./SecretWord.js";
 
 export interface IPlayer {
@@ -21,8 +22,9 @@ export default class Player {
 }
 
 export class HumanPlayer extends Player implements IPlayer {
-    constructor(name: string) {
-        super(name)
+    constructor() {
+        let name: string = readline.question("Digite seu nome:\n");
+        super(name);
     }
 
     guessLetter(letter: string, secretWord: SecretWord): LetterMatches | null {
