@@ -1,6 +1,6 @@
 import * as readline from 'readline-sync';
 import SecretWord, { LetterMatches} from "./SecretWord.js";
-import Player, { HumanPlayer, ComputerPlayer } from "./Players.js";
+import Player, { HumanPlayer, ComputerPlayer, IPlayer } from "./Players.js";
 import GameRenderCLI from "./GameRenderCLI.js";
 
 type PlayerScores = {
@@ -8,7 +8,7 @@ type PlayerScores = {
 };
 
 class HangmanGameLogic {
-    player?: Player;
+    player?: IPlayer;
     secretWord?: SecretWord;
     difficult?: number;
     guessedLetters: number = 0;
@@ -16,7 +16,7 @@ class HangmanGameLogic {
     scoreBoard: PlayerScores = {};
     gameRenderCLI?: GameRenderCLI;
 
-    startGame() {
+    constructor() {
         let playerOption;
         let difficultyOption;
         
@@ -46,7 +46,7 @@ class HangmanGameLogic {
 
     private askForPlayerGuessing(): LetterMatches {
         let userInput: string = readline.question("Guessing (letter): ");
-        let matches: LetterMatches = this.player.guessLetter(userInput[0]);
+        let matches: LetterMatches = this.player?.guessLetter(userInput[0], this.secretWord);
         return matches;
     }
 
