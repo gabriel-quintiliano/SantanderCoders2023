@@ -7,7 +7,16 @@
   "scripts": {
     "start": "tsc --watch"
   },
-  "keywords": ["game","hangman","hangman game","browser game"],
+  "keywords": [
+    "game",
+    "hangman",
+    "hangman game",
+    "browser game"
+  ],
   "author": "Gabriel Quintiliano",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@types/readline-sync": "^1.4.4",
+    "readline-sync": "^1.4.10"
+  }
 }
