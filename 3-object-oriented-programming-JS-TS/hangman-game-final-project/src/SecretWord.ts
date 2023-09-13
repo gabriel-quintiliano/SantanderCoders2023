@@ -1,4 +1,4 @@
-type LetterMatches = {total: number, indexes: Array<number>};
+export type LetterMatches = {total: number, indexes: Array<number>};
 
 export default class SecretWord {
     private secretWord: string;
