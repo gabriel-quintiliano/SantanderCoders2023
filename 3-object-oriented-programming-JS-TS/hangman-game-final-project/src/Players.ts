@@ -5,7 +5,7 @@ export interface IPlayer {
     name: string;
     score: number;
     id: number;
-    guessLetter(letter: string, secretWord: SecretWord): LetterMatches | null;
+    guessLetter(secretWord: SecretWord): LetterMatches;
 }
 
 export default class Player {
@@ -27,12 +27,9 @@ export class HumanPlayer extends Player implements IPlayer {
         super(name);
     }
 
-    guessLetter(letter: string, secretWord: SecretWord): LetterMatches | null {
-        let matches = secretWord.guessLetter(letter[0]);
-        if (matches.total > 0) {
-            return matches;
-        }
-        return null;
+    guessLetter(secretWord: SecretWord): LetterMatches {
+        let userInput: string = readline.question("Guessing (letter): ");
+        return secretWord.guessLetter(userInput[0]); // I've put [0] to make sure it only gets 1 char even if the user types more than 1 letter
     }
 }
 
@@ -42,7 +39,7 @@ export class ComputerPlayer extends Player implements IPlayer {
         this.name = `${this.name}ID${this.id}`
     }
     
-    guessLetter(letter: string, secretWord: SecretWord): LetterMatches | null{
-        return null;
+    guessLetter(secretWord: SecretWord): LetterMatches{
+        return secretWord.guessLetter("letter here");
     }
 }
