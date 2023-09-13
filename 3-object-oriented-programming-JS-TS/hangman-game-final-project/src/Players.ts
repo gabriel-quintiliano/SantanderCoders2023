@@ -1,5 +1,7 @@
+import SecretWord, { LetterMatches } from "./SecretWord.js";
+
 interface IPlayer {
-    guessLetter(letter: string): boolean;
+    guessLetter(letter: string, secretWord: SecretWord): LetterMatches | null;
 }
 
 export default class Player {
@@ -20,8 +22,12 @@ export class HumanPlayer extends Player implements IPlayer {
         super(name)
     }
 
-    guessLetter(letter: string): boolean{
-        return true;
+    guessLetter(letter: string, secretWord: SecretWord): LetterMatches | null {
+        let matches = secretWord.guessLetter(letter[0]);
+        if (matches.total > 0) {
+            return matches;
+        }
+        return null;
     }
 }
 
@@ -31,7 +37,7 @@ export class ComputerPlayer extends Player implements IPlayer {
         this.name = `${this.name}ID${this.id}`
     }
     
-    guessLetter(letter: string): boolean{
+    guessLetter(letter: string, secretWord: SecretWord): boolean{
         return true;
     }
 }
