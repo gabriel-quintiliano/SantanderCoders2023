@@ -1,3 +1,5 @@
+// Não consegui terminar por completo ainda
+
 import * as readline from 'readline-sync';
 import SecretWord, { LetterMatches} from "./SecretWord.js";
 import { HumanPlayer, ComputerPlayer, IPlayer } from "./Players.js";
@@ -40,7 +42,7 @@ class HangmanGameLogic {
             this.difficulty = readline.questionInt("Digite a dificuldade desejada? [0 - Fácil | 1 - Regular | 2 - Difícil | 3 - Muito Difício]\n");
         } while (this.difficulty < difficultyRatings.easy || this.difficulty > difficultyRatings.veryHard )
 
-        this.secretWord = new SecretWord(this.difficulty); // passar dificuldade aqui
+        this.secretWord = new SecretWord(this.difficulty);
         this.gameRenderCLI = new GameRenderCLI();
     }
 
@@ -51,13 +53,24 @@ class HangmanGameLogic {
     private initPlayersArray(): Array<IPlayer> {
         const players: Array<IPlayer> = [];
         let curPlayerCount: number = 0;
+
         while (true) {
-            let userInput = readline.question(`Player${curPlayerCount + 0}`)
+            let userInput = readline.question(`Player${curPlayerCount + 1}`)
+
+            if (userInput == initGameOptions.done){
+                if (curPlayerCount == 0) {
+                    console.log("Você adicionar no mínimo 1 player para jogar")
+                    continue;
+                }
+                return players;
+            }
             
-
-        }
-
-        for (let userInput = "", curPlayerCount = 1; userInput != initGameOptions.done; curPlayerCount++) {
+            switch (userInput) {
+                case initGameOptions.computerPlayer:
+                    players.push(new ComputerPlayer())
+                default:
+                    players.push(new HumanPlayer(userInput))
+            }
         }
     }
 

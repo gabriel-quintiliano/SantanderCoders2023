@@ -1,3 +1,5 @@
+// Não consegui terminar por completo ainda
+
 export type LetterMatches = {total: number, indexes: Array<number>};
 
 export default class SecretWord {
@@ -16,7 +18,7 @@ export default class SecretWord {
         this.secretWord = this.getSecretWord(difficulty);
     }
 
-    private getSecretWord(difficulty: number): string {
+    private getSecretWord(difficulty: number): string { // método para escolher aleatóriamente uma palavra de um dos arquivos .json dentro de /words
         return "";
     }
 

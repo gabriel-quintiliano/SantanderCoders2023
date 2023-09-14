@@ -22,9 +22,8 @@ export default class Player {
 }
 
 export class HumanPlayer extends Player implements IPlayer {
-    constructor() {
-        let name: string = readline.question("Digite seu nome:\n");
-        super(name);
+    constructor(name: string) {
+        super(name)
     }
 
     guessLetter(secretWord: SecretWord): LetterMatches {
@@ -33,6 +32,7 @@ export class HumanPlayer extends Player implements IPlayer {
     }
 }
 
+// Não consegui terminar por completo ainda
 export class ComputerPlayer extends Player implements IPlayer {
     constructor() {
         super(`Computer`);
