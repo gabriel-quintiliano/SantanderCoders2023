@@ -25,4 +25,13 @@ class StandaloneGameMatch {
         this.player = player;
         this.secretWord = new SecretWord(secretWordLength);
     }
+
+    startMatch() {
+        while (this.guessingsLeft || !this.secretWord.wasGuessed) {
+            this.player.guessLetter(this.secretWord)
+            this.guessingsLeft--;
+
+            // atualizar o render do puppet no console
+        }
+    }
 }
