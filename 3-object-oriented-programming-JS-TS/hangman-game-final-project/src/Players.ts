@@ -1,5 +1,5 @@
 import * as readline from "readline-sync"
-import SecretWord, { LetterMatches } from "./SecretWord.js";
+import SecretWord from "./SecretWord.js";
 
 export interface IPlayer {
     name: string;
@@ -27,8 +27,11 @@ export class HumanPlayer extends Player implements IPlayer {
     }
 
     guessLetter(secretWord: SecretWord): void {
-        let userInput: string = readline.question("Guessing (letter): ");
-        secretWord.guessLetter(userInput[0]); // I've put [0] to make sure it only gets 1 char even if the user types more than 1 letter
+        let userInput: string;
+
+        do {
+            userInput = readline.question("Palpite (letra): ");
+        } while (!secretWord.guessLetter(userInput[0])) // I've put [0] to make sure it only gets 1 char even if the user types more than 1 letter
     }
 }
 
