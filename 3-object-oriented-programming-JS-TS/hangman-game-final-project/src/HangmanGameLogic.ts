@@ -1,7 +1,8 @@
 import * as readline from 'readline-sync';
-import SecretWord, { LetterMatches} from "./SecretWord.js";
+import SecretWord from "./SecretWord.js";
 import { HumanPlayer, ComputerPlayer, IPlayer } from "./Players.js";
 import GameRenderCLI from "./GameRenderCLI.js";
+import StandaloneGameMatch from "./StandaloneGameMatch.js";
 
 type PlayerScores = {
     [playerName: string]: string;
@@ -21,7 +22,6 @@ enum initGameOptions {
 
 class HangmanGameLogic {
     players: Array<IPlayer>;
-    difficulty: number;
     guessedLetters: number = 0;
     guessingsLeft: number = 6;
     scoreBoard: PlayerScores = {};
@@ -38,24 +38,23 @@ class HangmanGameLogic {
         this.gameRenderCLI = new GameRenderCLI();
     }
 
-    startTournament() {
+    startGame() {
         const firstToPlayIndex = Math.floor(Math.random() * this.players.length);
         let curPlayer: IPlayer = this.players[firstToPlayIndex];
+        let standaloneGameMatch: StandaloneGameMatch;
+        let difficulty: number;
 
         let curPlayerIndex: number = firstToPlayIndex;
         let nextPlayerIndex: number;
 
         do {
-            nextPlayerIndex = (curPlayerIndex + 1) % this.players.length; 
-            startGameForPlayer(curPlayer);
+            nextPlayerIndex = (curPlayerIndex + 1) % this.players.length;
+            console.log(`É sua vez de jogar ${curPlayer.name}.`)
+            difficulty = curPlayer.chooseDifficulty();
+            standaloneGameMatch = new StandaloneGameMatch(curPlayer, difficulty);
 
             curPlayerIndex = nextPlayerIndex;
         } while (nextPlayerIndex != firstToPlayIndex) // The loop will go on until every player has player (and we're back to the player 'firstToPlay')
-    }
-
-    private startGameForPlayer(player: IPlayer) {
-        const secretWord = new SecretWord(this.difficulty);
-        
     }
 
     private initPlayersArray(): Array<IPlayer> {
@@ -80,9 +79,5 @@ class HangmanGameLogic {
                     players.push(new HumanPlayer(userInput))
             }
         }
-    }
-
-    private askForPlayerGuessing(player: IPlayer): LetterMatches {
-        return player.guessLetter(this.secretWord);
     }
 }

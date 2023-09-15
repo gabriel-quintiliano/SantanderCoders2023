@@ -1,11 +1,19 @@
 import * as readline from "readline-sync"
 import SecretWord from "./SecretWord.js";
 
+enum difficultyRatings {
+    easy = 0,
+    medium = 1,
+    hard = 2,
+    veryHard = 3
+}
+
 export interface IPlayer {
     name: string;
     score: number;
     id: number;
     guessLetter(secretWord: SecretWord): void;
+    chooseDifficulty(): number;
 }
 
 export default class Player {
@@ -26,6 +34,16 @@ export class HumanPlayer extends Player implements IPlayer {
         super(name)
     }
 
+    chooseDifficulty(): number {
+        let difficulty: number;
+
+        do {
+            difficulty = readline.questionInt("Digite a dificuldade desejada?\n 0 - Fácil (4-5 letras)\n 1 - Regular (4-5 letras)\n 2 - Difícil (4-5 letras)\n 3 - Muito Difício (4-5 letras)]\n--> ");
+        } while (difficulty < difficultyRatings.easy || difficulty > difficultyRatings.veryHard )
+
+        return difficulty;
+    }
+
     guessLetter(secretWord: SecretWord): void {
         let userInput: string;
 
@@ -44,5 +62,12 @@ export class ComputerPlayer extends Player implements IPlayer {
     
     guessLetter(secretWord: SecretWord): void {
         secretWord.guessLetter("letter here");
+    }
+
+    chooseDifficulty(): number {
+        let difficulty: number = Math.floor(Math.random() * difficultyRatings.veryHard);
+        console.log(`${this.name} escolheu a dificuldade: ${difficultyRatings[difficulty]}`);
+
+        return difficulty;
     }
 }
