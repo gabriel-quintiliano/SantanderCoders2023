@@ -1,10 +1,9 @@
 // Não consegui terminar por completo ainda
 
-export type LetterMatches = {total: number, indexes: Array<number>};
-
 export default class SecretWord {
     private secretWord: string;
     guessedLetters: number = 0;
+    previousLetterGuessings: Array<string> = [];
 
     get length(): number {
         return this.secretWord.length;
@@ -22,15 +21,18 @@ export default class SecretWord {
         return "";
     }
 
-    guessLetter(letter: string): LetterMatches {
-        const matches: LetterMatches = {total: 0, indexes: []};
+    guessLetter(letter: string): boolean {
+        if (this.previousLetterGuessings.includes(letter)){
+            console.log(`Você já tentou a digitou ${letter} como palpite, tente outra letra.`)
+            return false;
+        }
+
         let letterIndex: number;
 
         while ((letterIndex = this.secretWord.indexOf(letter)) != -1) {
-            matches.indexes.push(letterIndex);
             this.guessedLetters++;
         }
 
-        return matches;
+        return true;
     }
 }
