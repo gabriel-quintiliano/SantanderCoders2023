@@ -10,7 +10,7 @@ enum difficultyRatings {
     veryHard = 3
 }
 
-class StandaloneGameMatch {
+export default class StandaloneGameMatch {
     player: IPlayer;
     secretWord: SecretWord;
     guessedLetters: number = 0;
