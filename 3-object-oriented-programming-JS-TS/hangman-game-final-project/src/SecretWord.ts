@@ -6,7 +6,7 @@ enum difficultyRatings {
     veryHard = 3
 }
 export default class SecretWord {
-    private secretWord: string;
+    private secretWord: string = "";
     guessedLetters: number = 0;
     previousLetterGuessings: Array<string> = [];
     get length(): number { return this.secretWord.length };
@@ -26,10 +26,10 @@ export default class SecretWord {
                 wordLength = this.getRandomFromRange(19,23);
         }
 
-        this.secretWord = this.getSecretWord(difficulty);
+        this.initSecretWord(difficulty);
     }
 
-    private getSecretWord(desiredWorLength: number): string { // método para escolher aleatóriamente uma palavra de um dos arquivos .json dentro de /words
+    private initSecretWord(desiredWorLength: number): string { // método para escolher aleatóriamente uma palavra de um dos arquivos .json dentro de /words
         return "";
     }
 
