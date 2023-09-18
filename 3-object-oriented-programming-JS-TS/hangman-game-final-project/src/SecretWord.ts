@@ -8,7 +8,7 @@ enum difficultyRatings {
     veryHard = 3
 }
 export default class SecretWord {
-    private secretWord: string = "";
+    private secretWord?: string;
     guessedLetters: number = 0;
     previousLetterGuessings: Array<string> = [];
     get length(): number { return this.secretWord.length };
@@ -45,7 +45,10 @@ export default class SecretWord {
     }
 
     guessLetter(letter: string): boolean {
-
+        if (!this.secretWord) {
+            thow new Error("No value for instance attribute 'secretWord' defined yet;\nAs SecretWord's class constructor calls an asynchronous function to define a word for attribute 'secretWord', you may want to instanciate a new class instace and verify via setInterval() or other suitable async function the value of returned by instance's getter 'isAllSet' if there's already any valid value set")
+        }
+            
         if (this.previousLetterGuessings.includes(letter)){
             console.log(`Você já tentou a digitou ${letter} como palpite, tente outra letra.`)
             return false;
@@ -62,8 +65,11 @@ export default class SecretWord {
         return true;
     }
 
-    revealSecret(): string {
-        // console.log(`Que pena, mais sorte da próxima vez. A palavra secreta era:\n${this.secretWord}`)
-        return this.secretWord;
+    get isAllSet(): boolean {
+        if (this.secretWord) {
+            console.log(`PALAVRA SECRETA ---> ${this.secretWord}`) // remover depois
+            return true;
+        }
+        return false;
     }
 }
