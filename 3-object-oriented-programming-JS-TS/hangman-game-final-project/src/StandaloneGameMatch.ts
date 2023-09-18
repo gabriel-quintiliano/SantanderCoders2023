@@ -28,40 +28,43 @@ export default class StandaloneGameMatch {
         // menor que 4 (menor palavra), seja raised um erro correspondente de valor fora do range de length
        
         this.player = player;
-        this.secretWord = new SecretWord(secretWordLength);
+        this.secretWord = new SecretWord(secretWordLength, this);
         this.gameRenderCLI = new GameRenderCLI();
     }
 
-    startMatch(): number {
+    startMatch(): void {
 
         const intervalID = setInterval(() => {
-            if (!this.secretWord.revealSecret()) {
+            if (!this.secretWord.isAllSet) {
                 console.log("loading...")
                 return
             }
-            console.log(`Deu certo, o jogo vai começar ${this.player.name}! PALAVRA: ${this.secretWord.revealSecret()}`)
 
-            while (this.guessingsLeft && !this.secretWord.wasGuessed) {
-                this.player.guessLetter(this.secretWord)
-                this.guessingsLeft--;
-                this.score++;
-                console.log(`wasGuessed? --> ${this.secretWord.wasGuessed}`)
-                // atualizar o render do puppet no console
-            }
-    
-            if (this.secretWord.wasGuessed) {
-                this.score += this.bonusForGuessedWord;
-            }
-
-            this.secretWord.revealSecret()
-            
-            console.log(`@@@@@@@@@@@@@@@@ DENTRO ${this.score} @@@@@@@@@@@@@@@@`)
+            this._startMatch()
             clearInterval(intervalID);
-            return this.score;
-        }, 0)
+
+        }, 100)
+    }
+    
+    private _startMatch() {
+        console.log(`O jogo vai começar ${this.player.name}!`)
+
+        while (this.guessingsLeft && !this.secretWord.wasGuessed) {
+            this.player.guessLetter(this.secretWord)
+            this.guessingsLeft--;
+            this.score++;
+            console.log(`wasGuessed? --> ${this.secretWord.wasGuessed}`)
+            // atualizar o render do puppet no console
+        }
+
+        if (this.secretWord.wasGuessed) {
+            this.score += this.bonusForGuessedWord;
+            console.log("Parabéns! Você conseguiu acertar a palavra!")
+        } else {
+            console.log(`A palavra secreta era: ${this.secretWord.revealWord()}`)
+        }
         
-        console.log(`@@@@@@@@@@@@@@@@ FORA ${this.score} @@@@@@@@@@@@@@@@`)
-        return this.score;
+        console.log(`Você fez ${this.score} pontos!`)
     }
 
     private get bonusForGuessedWord() {
