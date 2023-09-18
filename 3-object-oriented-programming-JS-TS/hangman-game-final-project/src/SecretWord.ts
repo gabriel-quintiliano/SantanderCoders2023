@@ -13,8 +13,8 @@ export default class SecretWord {
     private environment: StandaloneGameMatch;
     guessedLetters: number = 0;
     previousLetterGuessings: Array<string> = [];
-    get length(): number { return this.secretWord.length };
-    get wasGuessed(): boolean { return this.secretWord.length === this.guessedLetters };
+    get length(): number { return this.secretWord ? this.secretWord.length : 0 };
+    get wasGuessed(): boolean { return this.secretWord ? this.secretWord.length === this.guessedLetters : false };
 
     constructor(wordLength: number, environment: StandaloneGameMatch) { //use enums aqui
         this.initSecretWord(wordLength);
