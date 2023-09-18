@@ -18,6 +18,10 @@ export default class StandaloneGameMatch {
     guessingsLeft: number = 6;
     score: number = 0;
     gameRenderCLI: GameRenderCLI;
+    get isMatchEnded(): boolean {
+        if (this.guessingsLeft && !this.secretWord.wasGuessed) return false
+        return true
+    }
 
     constructor(player: IPlayer, secretWordLength: number) {
         // fazer um verificador para caso 'secretWordLength' for maior que 23 (maior palavra) ou
