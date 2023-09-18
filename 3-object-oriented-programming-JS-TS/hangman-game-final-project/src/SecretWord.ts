@@ -1,5 +1,6 @@
 // Não consegui terminar por completo ainda
 import * as readline from 'readline-sync';
+import StandaloneGameMatch from "./StandaloneGameMatch.js";
 
 enum difficultyRatings {
     easy = 0,
@@ -8,26 +9,20 @@ enum difficultyRatings {
     veryHard = 3
 }
 export default class SecretWord {
-    private secretWord?: string;
+    private _secretWord?: string;
+    private environment: StandaloneGameMatch;
     guessedLetters: number = 0;
     previousLetterGuessings: Array<string> = [];
     get length(): number { return this.secretWord.length };
     get wasGuessed(): boolean { return this.secretWord.length === this.guessedLetters };
+    get secretWord(): string {
+        if (environment.isMatchEnded) return this.secretWord
+        console.log("O jogo ainda não acabou, não é possível revelar a palavra secreta")
+    }
 
-    constructor(wordLength: number) { //use enums aqui
-
-        // switch (difficulty) {
-        //     case difficultyRatings.easy: // easy word --> 4 to 5 letters
-        //         wordLength = this.getRandomFromRange(4,5);
-        //     case difficultyRatings.medium: // medium word --> 6 to 13 letters
-        //         wordLength = this.getRandomFromRange(6,13);
-        //     case difficultyRatings.hard: // hard word --> 14 to 18 letters
-        //         wordLength = this.getRandomFromRange(14,18);
-        //     case difficultyRatings.veryHard: // very hard word --> 19 to 23 letters
-        //         wordLength = this.getRandomFromRange(19,23);
-        //}
-
+    constructor(wordLength: number, environment: StandaloneGameMatch) { //use enums aqui
         this.initSecretWord(wordLength);
+        this.environment = environment;
     }
 
     private initSecretWord(desiredWorLength: number): void { // método para escolher aleatóriamente uma palavra de um dos arquivos .json dentro de /words
@@ -71,5 +66,9 @@ export default class SecretWord {
             return true;
         }
         return false;
+    }
+
+    revealWord() {
+        if (environment.)
     }
 }
