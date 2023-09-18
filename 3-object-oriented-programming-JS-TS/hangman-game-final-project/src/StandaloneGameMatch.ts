@@ -2,6 +2,7 @@ import * as readline from 'readline-sync';
 import SecretWord from "./SecretWord.js";
 import { HumanPlayer, ComputerPlayer, IPlayer } from "./Players.js";
 import GameRenderCLI from "./GameRenderCLI.js";
+import { Console } from 'console';
 
 enum difficultyRatings {
     easy = 0,
@@ -28,17 +29,34 @@ export default class StandaloneGameMatch {
     }
 
     startMatch(): number {
-        while (this.guessingsLeft || !this.secretWord.wasGuessed) {
-            this.player.guessLetter(this.secretWord)
-            this.guessingsLeft--;
 
-            // atualizar o render do puppet no console
-        }
+        const intervalID = setInterval(() => {
+            if (!this.secretWord.revealSecret()) {
+                console.log("loading...")
+                return
+            }
+            console.log(`Deu certo, o jogo vai começar ${this.player.name}! PALAVRA: ${this.secretWord.revealSecret()}`)
 
-        if (this.secretWord.wasGuessed) {
-            this.score += this.bonusForGuessedWord;
-        }
+            while (this.guessingsLeft && !this.secretWord.wasGuessed) {
+                this.player.guessLetter(this.secretWord)
+                this.guessingsLeft--;
+                this.score++;
+                console.log(`wasGuessed? --> ${this.secretWord.wasGuessed}`)
+                // atualizar o render do puppet no console
+            }
+    
+            if (this.secretWord.wasGuessed) {
+                this.score += this.bonusForGuessedWord;
+            }
+
+            this.secretWord.revealSecret()
+            
+            console.log(`@@@@@@@@@@@@@@@@ DENTRO ${this.score} @@@@@@@@@@@@@@@@`)
+            clearInterval(intervalID);
+            return this.score;
+        }, 0)
         
+        console.log(`@@@@@@@@@@@@@@@@ FORA ${this.score} @@@@@@@@@@@@@@@@`)
         return this.score;
     }
 
@@ -58,3 +76,9 @@ export default class StandaloneGameMatch {
         return bonus;
     }
 }
+
+
+// const novoJogo = new StandaloneGameMatch(new HumanPlayer("Gabriel"), 3)
+// let score = novoJogo.startMatch()
+// setTimeout(() => {console.log(`@@@@@@@@@@@@@@@@ DEPOIS ${score} @@@@@@@@@@@@@@@@`)
+// }, 10000)

@@ -25,36 +25,38 @@ class HangmanGameLogic {
     guessedLetters: number = 0;
     guessingsLeft: number = 6;
     scoreBoard: PlayerScores = {};
-    gameRenderCLI: GameRenderCLI;
+    // gameRenderCLI: GameRenderCLI;
 
     constructor() {
         console.log(`Um novo jogo da forca está preste a começar, digite o nome de cada jogador conforme solicitado:\n(- Digite '${initGameOptions.computerPlayer}')\n(- Digite '${initGameOptions.done}' para salvar os jogadores)\n`);
         this.players = this.initPlayersArray();
-        
-        do {
-            this.difficulty = readline.questionInt("Digite a dificuldade desejada? [0 - Fácil | 1 - Regular | 2 - Difícil | 3 - Muito Difício]\n");
-        } while (this.difficulty < difficultyRatings.easy || this.difficulty > difficultyRatings.veryHard )
 
-        this.gameRenderCLI = new GameRenderCLI();
+        // this.gameRenderCLI = new GameRenderCLI();
     }
 
     startGame() {
-        const firstToPlayIndex = Math.floor(Math.random() * this.players.length);
-        let curPlayer: IPlayer = this.players[firstToPlayIndex];
-        let standaloneGameMatch: StandaloneGameMatch;
-        let difficulty: number;
 
-        let curPlayerIndex: number = firstToPlayIndex;
-        let nextPlayerIndex: number;
-
-        do {
-            nextPlayerIndex = (curPlayerIndex + 1) % this.players.length;
-            console.log(`É sua vez de jogar ${curPlayer.name}.`)
-            difficulty = curPlayer.chooseDifficulty();
-            standaloneGameMatch = new StandaloneGameMatch(curPlayer, difficulty);
-
-            curPlayerIndex = nextPlayerIndex;
-        } while (nextPlayerIndex != firstToPlayIndex) // The loop will go on until every player has player (and we're back to the player 'firstToPlay')
+        setTimeout(() => {const firstToPlayIndex = Math.floor(Math.random() * this.players.length);
+            let curPlayer: IPlayer;
+            let standaloneGameMatch: StandaloneGameMatch;
+            let difficulty: number;
+    
+            let curPlayerIndex: number = firstToPlayIndex;
+            let nextPlayerIndex: number;
+    
+            do {
+                curPlayer = this.players[curPlayerIndex];
+                nextPlayerIndex = (curPlayerIndex + 1) % this.players.length;
+                console.log(`nextPlayerIndex --> ${nextPlayerIndex}`)
+                console.log(`curPlayerIndex --> ${curPlayerIndex}`)
+                console.log(`É sua vez de jogar ${curPlayer.name}.`)
+                difficulty = curPlayer.chooseDifficulty();
+                standaloneGameMatch = new StandaloneGameMatch(curPlayer, difficulty);
+                standaloneGameMatch.startMatch()
+    
+                curPlayerIndex = nextPlayerIndex;
+            } while (nextPlayerIndex != firstToPlayIndex) // The loop will go on until every player has player (and we're back to the player 'firstToPlay')
+        }, 0)
     }
 
     private initPlayersArray(): Array<IPlayer> {
@@ -62,7 +64,7 @@ class HangmanGameLogic {
         let curPlayerCount: number = 0;
 
         while (true) {
-            let userInput = readline.question(`Player${curPlayerCount + 1}`)
+            let userInput = readline.question(`Player${curPlayerCount + 1}: `)
 
             if (userInput == initGameOptions.done){
                 if (curPlayerCount == 0) {
@@ -78,6 +80,10 @@ class HangmanGameLogic {
                 default:
                     players.push(new HumanPlayer(userInput))
             }
+
+            curPlayerCount++;
         }
     }
 }
+
+(new HangmanGameLogic()).startGame()
