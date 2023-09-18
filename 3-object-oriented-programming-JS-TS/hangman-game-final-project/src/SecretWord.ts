@@ -9,16 +9,12 @@ enum difficultyRatings {
     veryHard = 3
 }
 export default class SecretWord {
-    private _secretWord?: string;
+    private secretWord?: string;
     private environment: StandaloneGameMatch;
     guessedLetters: number = 0;
     previousLetterGuessings: Array<string> = [];
     get length(): number { return this.secretWord.length };
     get wasGuessed(): boolean { return this.secretWord.length === this.guessedLetters };
-    get secretWord(): string {
-        if (environment.isMatchEnded) return this.secretWord
-        console.log("O jogo ainda não acabou, não é possível revelar a palavra secreta")
-    }
 
     constructor(wordLength: number, environment: StandaloneGameMatch) { //use enums aqui
         this.initSecretWord(wordLength);
@@ -28,10 +24,9 @@ export default class SecretWord {
     private initSecretWord(desiredWorLength: number): void { // método para escolher aleatóriamente uma palavra de um dos arquivos .json dentro de /words
         import(`./../words/${desiredWorLength}-letter-words.json`, {assert: {type: "json"}})
         .then(({ default: wordsArr }) => {
-            console.log("\n\nTAMANHO DO ARRAY DE PALAVRAS = ", wordsArr.length)
+            console.log("\n\nTAMANHO DO ARRAY DE PALAVRAS = ", wordsArr.length, ` palavra secreta: ${this.secretWord}`)
             const randWordIndex = this.getRandomFromRange(0, wordsArr.length);
             this.secretWord = wordsArr[randWordIndex];
-            this.revealSecret()
         })
     }
 
@@ -41,7 +36,7 @@ export default class SecretWord {
 
     guessLetter(letter: string): boolean {
         if (!this.secretWord) {
-            thow new Error("No value for instance attribute 'secretWord' defined yet;\nAs SecretWord's class constructor calls an asynchronous function to define a word for attribute 'secretWord', you may want to instanciate a new class instace and verify via setInterval() or other suitable async function the value of returned by instance's getter 'isAllSet' if there's already any valid value set")
+            throw new Error("No value for instance attribute 'secretWord' defined yet;\nAs SecretWord's class constructor calls an asynchronous function to define a word for attribute 'secretWord', you may want to instanciate a new class instace and verify via setInterval() or other suitable async function the value of returned by instance's getter 'isAllSet' if there's already any valid value set")
         }
             
         if (this.previousLetterGuessings.includes(letter)){
@@ -69,6 +64,7 @@ export default class SecretWord {
     }
 
     revealWord() {
-        if (environment.)
+        if (this.environment.isMatchEnded) return this.secretWord
+        return '******* [The secret word can only be reveled after the end of the game match]'
     }
 }
