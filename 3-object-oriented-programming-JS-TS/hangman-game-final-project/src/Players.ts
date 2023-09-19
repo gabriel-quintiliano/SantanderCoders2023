@@ -12,7 +12,7 @@ export interface IPlayer {
     name: string;
     score: number;
     id: number;
-    guessLetter(secretWord: SecretWord): void;
+    guessLetter(secretWord: SecretWord): number;
     chooseDifficulty(): number;
 }
 
@@ -38,18 +38,17 @@ export class HumanPlayer extends Player implements IPlayer {
         let difficulty: number;
 
         do {
-            difficulty = readline.questionInt("Digite a dificuldade desejada?\n 0 - Fácil (4-5 letras)\n 1 - Regular (4-5 letras)\n 2 - Difícil (4-5 letras)\n 3 - Muito Difício (4-5 letras)]\n--> ");
+            difficulty = readline.questionInt("Digite a dificuldade desejada?\n 0 - Fácil (3-5 letras)\n 1 - Regular (6-13 letras)\n 2 - Difícil (14-18 letras)\n 3 - Muito Difício (19-23 letras)]\n--> ");
         } while (difficulty < difficultyRatings.easy || difficulty > difficultyRatings.veryHard )
 
         return difficulty;
     }
 
-    guessLetter(secretWord: SecretWord): void {
+    guessLetter(secretWord: SecretWord): number {
         let userInput: string;
-
-        do {
-            userInput = readline.question("Palpite (letra): ");
-        } while (!secretWord.guessLetter(userInput[0])) // I've put [0] to make sure it only gets 1 char even if the user types more than 1 letter
+        userInput = readline.question("Palpite (letra): ");
+        
+        return secretWord.guessLetter(userInput[0]) // I've put [0] to make sure it only gets 1 char even if the user types more than 1 letter
     }
 }
 
@@ -60,8 +59,9 @@ export class ComputerPlayer extends Player implements IPlayer {
         this.name = `${this.name}ID${this.id}`
     }
     
-    guessLetter(secretWord: SecretWord): void {
+    guessLetter(secretWord: SecretWord): number {
         secretWord.guessLetter("letter here");
+        return 0;
     }
 
     chooseDifficulty(): number {

@@ -23,12 +23,12 @@ export default class StandaloneGameMatch {
         return true
     }
 
-    constructor(player: IPlayer, secretWordLength: number) {
+    constructor(player: IPlayer, difficulty: number) {
         // fazer um verificador para caso 'secretWordLength' for maior que 23 (maior palavra) ou
         // menor que 4 (menor palavra), seja raised um erro correspondente de valor fora do range de length
        
         this.player = player;
-        this.secretWord = new SecretWord(secretWordLength, this);
+        this.secretWord = new SecretWord(difficulty, this);
         this.gameRenderCLI = new GameRenderCLI();
     }
 
@@ -47,13 +47,21 @@ export default class StandaloneGameMatch {
     }
     
     private _startMatch() {
-        console.log(`O jogo vai começar ${this.player.name}!`)
+        console.log(`\nO jogo vai começar!\n`)
 
         while (this.guessingsLeft && !this.secretWord.wasGuessed) {
-            this.player.guessLetter(this.secretWord)
-            this.guessingsLeft--;
-            this.score++;
-            console.log(`wasGuessed? --> ${this.secretWord.wasGuessed}`)
+
+            let correctMatches = this.player.guessLetter(this.secretWord)
+
+            if (correctMatches > 0) { // Verifies if the player has guessed correctly any letters
+                this.score += correctMatches;
+            } else if (correctMatches == 0){ // verifies if no letter was correctly guessed
+                this.guessingsLeft--;
+            }
+            
+            console.log(`score: ${this.score}`)
+            console.log(`guessingsLeft: ${this.guessingsLeft}`)
+            // console.log(`wasGuessed? --> ${this.secretWord.wasGuessed}`)
             // atualizar o render do puppet no console
         }
 

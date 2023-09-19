@@ -36,27 +36,45 @@ class HangmanGameLogic {
 
     startGame() {
 
-        setTimeout(() => {const firstToPlayIndex = Math.floor(Math.random() * this.players.length);
-            let curPlayer: IPlayer;
-            let standaloneGameMatch: StandaloneGameMatch;
-            let difficulty: number;
-    
-            let curPlayerIndex: number = firstToPlayIndex;
-            let nextPlayerIndex: number;
-    
-            do {
+        const firstToPlayIndex = Math.floor(Math.random() * this.players.length);
+        let curPlayer: IPlayer;
+        let standaloneGameMatch: StandaloneGameMatch;
+        let difficulty: number;
+
+        let curPlayerIndex: number = firstToPlayIndex;
+        let nextPlayerIndex: number;
+
+        let isCurGameMatchEnded: boolean = true; // Para que o primeiro condicional abaixo funcione corretamente
+
+        let loop = 1;
+        const intervalID = setInterval(() => {
+            console.log("==================== dentro do setInterval HangmanGameLogic ====================")
+            console.log(`loop ${loop}`)
+            loop++;
+
+            if (isCurGameMatchEnded) {
                 curPlayer = this.players[curPlayerIndex];
                 nextPlayerIndex = (curPlayerIndex + 1) % this.players.length;
+
                 console.log(`nextPlayerIndex --> ${nextPlayerIndex}`)
                 console.log(`curPlayerIndex --> ${curPlayerIndex}`)
                 console.log(`É sua vez de jogar ${curPlayer.name}.`)
-                difficulty = curPlayer.chooseDifficulty();
+
+                let difficulty = curPlayer.chooseDifficulty();
                 standaloneGameMatch = new StandaloneGameMatch(curPlayer, difficulty);
                 standaloneGameMatch.startMatch()
-    
+
                 curPlayerIndex = nextPlayerIndex;
-            } while (nextPlayerIndex != firstToPlayIndex) // The loop will go on until every player has player (and we're back to the player 'firstToPlay')
-        }, 0)
+            }
+
+            if (nextPlayerIndex == firstToPlayIndex) {
+                console.log("==================== VAI TERMINAR! ====================")
+                clearInterval(intervalID)
+            }
+
+            isCurGameMatchEnded = standaloneGameMatch.isMatchEnded
+
+        }, 100)
     }
 
     private initPlayersArray(): Array<IPlayer> {
@@ -84,6 +102,8 @@ class HangmanGameLogic {
             curPlayerCount++;
         }
     }
+
+
 }
 
 (new HangmanGameLogic()).startGame()
