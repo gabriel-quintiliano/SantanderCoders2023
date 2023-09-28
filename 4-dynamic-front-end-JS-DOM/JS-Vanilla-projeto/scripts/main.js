@@ -3,7 +3,7 @@ import { state , saveStateToLocalStorage} from './state.js';
 
 // Função para manipular mudanças de hash
 function handleHashChange() {
-    const currentRoute = window.location.hash.slice(1) || '/';
+    const currentRoute = window.location.hash.slice(1) || '/'; // Extrai a hash (sem #) da url ou se não houver vai para '/' (home)
     state.currentRoute = currentRoute; // Atualize o estado de rota
     router();
 }
