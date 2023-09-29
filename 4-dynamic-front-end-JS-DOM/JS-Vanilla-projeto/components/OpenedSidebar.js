@@ -1,4 +1,4 @@
-export function renderSidebar() {
+export function renderOpenedSidebar() {
     const styleTag = document.createElement("style");
 
     styleTag.innerHTML = `
