@@ -1,0 +1,21 @@
+<section id="contact" class="my-5">
+	<div class="container">
+		<h1 class="text-center mb-4">Contato</h1>
+		<div class="mb-3">
+			<label for="exampleFormControlInput1" class="form-label">Email</label>
+			<!--  -->
+			<input [disabled]="disableEmail" [(ngModel)]="contactInfo.email" (keyup)="testEvent($event)" type="email"
+				name="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" />
+		</div>
+		<div class="mb-3">
+			<label for="exampleFormControlTextarea1" class="form-label">Mensagem</label>
+			<textarea [(ngModel)]="contactInfo.message" class="form-control" name="message"
+				id="exampleFormControlTextarea1" rows="3" #textArea></textarea>
+		</div>
+		<button (click)="sendColorChangeRequest(textArea.value)" class="btn btn-primary">Enviar</button>
+		<!-- <button (click)="submitForm(contactInfo)" class="btn btn-primary">Enviar</button> -->
+		<!-- <button [hidden]="disabledButton" [disabled]="disabledButton" class="btn btn-primary">Variável Enviar</button>
+      <button [hidden]="disabledButtonFunction()" [disabled]="disabledButtonFunction()" class="btn btn-primary">Função Enviar</button> -->
+
+	</div>
+</section>

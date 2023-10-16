@@ -1,0 +1,44 @@
+<section id="features" class="my-5">
+	<div class="container">
+		<h1 class="text-center mb-4">Destaques</h1>
+		<div class="row">
+			<div class="col features text-center" [ngStyle]="{'background-color': bgColor ? bgColor : 'blue'}">
+				<img src="./../assets/images/feature1.png" alt="" />
+				<div class="text-center">
+					<h4>{{ featuresData.features[0].title }}</h4>
+					<p>
+						{{featuresData.features[0].text}}
+					</p>
+				</div>
+			</div>
+			<div class="col features text-center"
+				[ngStyle]="{'background-color': featuresColor ? featuresColor : 'blue'}">
+				<img src="./../assets/images/feature2.png" alt="" />
+				<div class="text-center">
+					<h4>{{ featuresData.features[1].title }}</h4>
+					<p>
+						{{featuresData.features[1].text}}
+					</p>
+				</div>
+			</div>
+			<div class="col features text-center">
+				<img src="./../assets/images/feature3.png" alt="" />
+				<div class="text-center">
+					<h4>{{ featuresData.features[2].title }}</h4>
+					<p>
+						{{featuresData.features[2].text}}
+					</p>
+				</div>
+			</div>
+			<div class="col features text-center">
+				<img src="./../assets/images/feature4.png" alt="" />
+				<div class="text-center">
+					<h4>{{ featuresData.features[3].title }}</h4>
+					<p>
+						{{featuresData.features[3].text}}
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
