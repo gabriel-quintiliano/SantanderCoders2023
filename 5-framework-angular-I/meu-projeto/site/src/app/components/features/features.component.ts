@@ -11,6 +11,7 @@ export class FeaturesComponent {
 	@Input() public featuresColor!: string;
 	ngOnInit() {
 		console.log(this.featuresData)
-		// setInterval(() => console.log(this.bgColor), 1000);
+		setInterval(() => console.log(this.bgColor), 1000);
+		setInterval(() => console.log(this.bgColor), 1000);
 	}
 }
